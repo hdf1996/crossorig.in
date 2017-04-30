@@ -37,3 +37,13 @@ namespace :puma do
 
   before :start, :make_dirs
 end
+
+namespace :nginx do
+  task :restart do
+    on roles(:app) do
+      execute "sudo service nginx restart"
+    end
+  end
+end
+
+after "puma:restart", "nginx:restart"

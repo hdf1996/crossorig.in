@@ -33,7 +33,6 @@ require "capistrano/rbenv"
 require "capistrano/bundler"
 
 require 'capistrano/puma'
-require 'capistrano/nginx'
 
 install_plugin Capistrano::Puma  # Default puma tasks
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
