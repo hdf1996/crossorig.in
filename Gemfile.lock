@@ -165,6 +165,7 @@ PLATFORMS
 
 DEPENDENCIES
   capistrano (~> 3.6)
+  capistrano-bundler (~> 1.2)
   capistrano-rails (~> 1.2)
   capistrano-rbenv (~> 2.0)
   capistrano3-puma

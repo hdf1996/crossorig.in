@@ -33,9 +33,7 @@ require "capistrano/rbenv"
 require "capistrano/bundler"
 
 require 'capistrano/puma'
-# require "capistrano/rails/assets"
-# require "capistrano/rails/migrations"
-# require "capistrano/passenger"
 
-# Load custom tasks from `lib/capistrano/tasks` if you have any defined
+install_plugin Capistrano::Puma  # Default puma tasks
+install_plugin Capistrano::Puma::Nginx  # if you want to upload a nginx site template
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
