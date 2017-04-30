@@ -58,7 +58,8 @@ a {
   user-select: none;
   color: white; }
   .main-title .title-i {
-    position: relative; }
+    position: relative;
+    display: inline-flex; }
     .main-title .title-i::before {
       content: "";
       width: 16px;
@@ -66,16 +67,16 @@ a {
       background: white;
       border-radius: 50%;
       position: absolute;
-      top: 25px;
-      left: 8px; }
+      top: -20px;
+      left: 8px;
+      animation: i 5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; }
     .main-title .title-i span {
       color: white;
       display: inline-flex;
       align-items: flex-end;
       height: 85px;
       overflow: hidden;
-      position: relative;
-      top: 25px; }
+      position: relative; }
   .main-title .title-n {
     position: relative; }
     .main-title .title-n::before {
@@ -86,7 +87,8 @@ a {
       border-radius: 50%;
       position: absolute;
       top: 25px;
-      left: 8px; }
+      left: 8px;
+      animation: n 5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; }
 
 .slogan {
   color: white;
@@ -101,31 +103,34 @@ a {
     .cors-it > div input {
       border-radius: 0;
       border: none;
-      height: 50px;
+      min-height: 50px;
       padding: 5px 25px;
       box-sizing: border-box;
       display: inline-block; }
       .cors-it > div input[type="text"] {
-        border-bottom: 5px solid rgba(215, 186, 69, 0.5);
+        border-bottom: 5px solid rgba(236, 167, 47, 0.5);
         flex: 5;
         padding-bottom: 2.5px;
         font-size: 1em; }
         .cors-it > div input[type="text"]:hover ~ .text-it::before {
           transform: translateX(10px); }
         .cors-it > div input[type="text"]:focus {
-          border-bottom-color: #D7BA45; }
+          border-bottom-color: #ECA72F; }
           .cors-it > div input[type="text"]:focus ~ .text-it::before {
             transform: translateX(30px);
-            animation: blink 1s ease infinite;
+            animation: blink 1s infinite;
             height: 25px; }
       .cors-it > div input[type="submit"] {
         min-width: 125px;
-        background: #D7BA45;
+        background: #ECA72F;
         text-align: center;
         color: white;
         font-size: 1em;
         font-weight: bold;
-        font-family: "Gotham Rounded Book"; }
+        font-family: "Gotham Rounded Book";
+        cursor: pointer; }
+        .cors-it > div input[type="submit"]:hover {
+          background: #f0bb5e; }
 
 .text-it {
   position: absolute;
@@ -138,15 +143,49 @@ a {
     content: "";
     width: 5px;
     height: 50px;
-    background: #D7BA45;
+    background: #ECA72F;
     transition: 0.5s ease; }
 
 @keyframes blink {
   0% {
-    background: #D7BA45; }
+    background: #ECA72F; }
   50% {
     background: #F4F4F4; }
   100% {
-    background: #D7BA45; } }
+    background: #ECA72F; } }
+@keyframes i {
+  0% {
+    transform: translate(0px, 0); }
+  15% {
+    transform: translate(30px, -20px); }
+  40% {
+    transform: translate(95px, -20px); }
+  70% {
+    transform: translate(95px, 0); }
+  100% {
+    transform: translate(95px, 0); } }
+@keyframes n {
+  0% {
+    transform: translate(0px, 0); }
+  15% {
+    transform: translate(-30px, -20px); }
+  40% {
+    transform: translate(-95px, -20px); }
+  70% {
+    transform: translate(-95px, 0); }
+  100% {
+    transform: translate(-95px, 0); } }
+@media screen and (max-width: 760px) {
+  .main-title {
+    font-size: 3em; }
+    .main-title .title-i::before, .main-title .title-n::before {
+      content: none; }
+
+  .cors-it > div {
+    flex-direction: column;
+    padding: 0 40px; }
+
+  .cors-it > div input[type="submit"] {
+    margin-top: 20px; } }
 
 /*# sourceMappingURL=main.css.map */

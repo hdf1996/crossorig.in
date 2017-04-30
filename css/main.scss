@@ -30,7 +30,7 @@ $font1: "Bookman Old Style";
 $font2: "Gotham Rounded";
 $font3: "Gotham Rounded Book";
 $color1: #26223D;
-$color2: #D7BA45;
+$color2: #ECA72F;
 $gray: #F4F4F4;
 
 
@@ -87,6 +87,7 @@ a{
   color: white;
   .title-i{
     position: relative;
+    display: inline-flex;
     &::before{
       content: "";
       width: 16px;
@@ -94,8 +95,9 @@ a{
       background: white;
       border-radius: 50%;
       position: absolute;
-      top: 25px;
+      top: -20px;
       left: 8px;
+      animation: i 5s cubic-bezier(.68,-0.55,.27,1.55) infinite;
     }
     span{
       color: white;
@@ -104,7 +106,6 @@ a{
       height: 85px;
       overflow: hidden;
       position: relative;
-      top: 25px;
     }
   }
   .title-n{
@@ -118,6 +119,7 @@ a{
       position: absolute;
       top: 25px;
       left: 8px;
+      animation: n 5s cubic-bezier(.68,-0.55,.27,1.55) infinite ;
     }
   }
 }
@@ -136,7 +138,7 @@ a{
     input{
       border-radius: 0;
       border: none;
-      height: 50px;
+      min-height: 50px;
       padding: 5px 25px;
       box-sizing: border-box;
       display: inline-block;
@@ -157,7 +159,7 @@ a{
           ~ .text-it{
             &::before{
               transform: translateX(30px);
-              animation: blink 1s ease infinite;
+              animation: blink 1s  infinite ;
               height: 25px;
             }
           }
@@ -171,6 +173,10 @@ a{
         font-size: 1em;
         font-weight: bold;
         font-family: $font3;
+        cursor: pointer;
+        &:hover{
+          background: lighten($color2, 10)
+        }
       }
 
     }
@@ -201,5 +207,61 @@ a{
   }
   100%{
     background: $color2;
+  }
+}
+
+@keyframes i{
+  0%{
+    transform: translate(0px,0);
+  }
+  15%{
+    transform: translate(30px,-20px);
+  }
+  40%{
+    transform: translate(95px, -20px)
+  }
+  70%{
+    transform: translate(95px, 0);
+  }
+  100%{
+    transform: translate(95px, 0);
+  }
+
+}
+@keyframes n{
+  0%{
+    transform: translate(0px,0);
+  }
+  15%{
+    transform: translate(-30px,-20px);
+  }
+  40%{
+    transform: translate(-95px, -20px)
+  }
+  70%{
+    transform: translate(-95px, 0);
+  }
+  100%{
+    transform: translate(-95px, 0);
+  }
+
+}
+
+
+@media screen and (max-width: 760px){
+  .main-title{
+    font-size: 3em;
+    .title-i, .title-n{
+      &::before{
+        content: none;
+      }
+    }
+  }
+  .cors-it > div{
+    flex-direction: column;
+    padding: 0 40px;
+  }
+  .cors-it > div input[type="submit"]{
+    margin-top: 20px;
   }
 }
