@@ -16,9 +16,10 @@ gem 'sass-rails', github: "rails/sass-rails"
 
 group :development, :test do
 
-  gem 'capistrano', '~> 3.6'
-  gem 'capistrano-rails', '~> 1.2'
-  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano', '~> 3.6', require: false
+  gem 'capistrano-rails', '~> 1.2', require: false
+  gem 'capistrano-rbenv', '~> 2.0', require: false
+  gem 'capistrano3-puma',   require: false
 
   gem 'pry-rails'
 end
