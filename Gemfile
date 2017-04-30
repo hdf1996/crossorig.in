@@ -12,6 +12,7 @@ gem 'rails', '~> 5.1.0.rc1'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', github: "rails/sass-rails"
+gem 'httparty'
 
 gem 'dotenv-rails', :github => "bkeepers/dotenv", :require => 'dotenv/rails-now'
 group :development, :test do
