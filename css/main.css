@@ -39,14 +39,23 @@ a {
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center; }
 
 .hello {
-  text-align: center; }
+  text-align: center;
+  margin-top: -251.8px;
+  padding-bottom: 50px; }
 
 .main-title {
   font-size: 7em;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: white; }
   .main-title .title-i {
     position: relative; }
@@ -78,5 +87,66 @@ a {
       position: absolute;
       top: 25px;
       left: 8px; }
+
+.slogan {
+  color: white;
+  font-size: 1.25em; }
+
+.cors-it {
+  width: 100%;
+  max-width: 850px; }
+  .cors-it > div {
+    display: flex;
+    position: relative; }
+    .cors-it > div input {
+      border-radius: 0;
+      border: none;
+      height: 50px;
+      padding: 5px 25px;
+      box-sizing: border-box;
+      display: inline-block; }
+      .cors-it > div input[type="text"] {
+        border-bottom: 5px solid rgba(215, 186, 69, 0.5);
+        flex: 5;
+        padding-bottom: 2.5px;
+        font-size: 1em; }
+        .cors-it > div input[type="text"]:hover ~ .text-it::before {
+          transform: translateX(10px); }
+        .cors-it > div input[type="text"]:focus {
+          border-bottom-color: #D7BA45; }
+          .cors-it > div input[type="text"]:focus ~ .text-it::before {
+            transform: translateX(30px);
+            animation: blink 1s ease infinite;
+            height: 25px; }
+      .cors-it > div input[type="submit"] {
+        min-width: 125px;
+        background: #D7BA45;
+        text-align: center;
+        color: white;
+        font-size: 1em;
+        font-weight: bold;
+        font-family: "Gotham Rounded Book"; }
+
+.text-it {
+  position: absolute;
+  left: -20px;
+  height: 50px;
+  top: 0;
+  display: flex;
+  align-items: center; }
+  .text-it::before {
+    content: "";
+    width: 5px;
+    height: 50px;
+    background: #D7BA45;
+    transition: 0.5s ease; }
+
+@keyframes blink {
+  0% {
+    background: #D7BA45; }
+  50% {
+    background: #F4F4F4; }
+  100% {
+    background: #D7BA45; } }
 
 /*# sourceMappingURL=main.css.map */

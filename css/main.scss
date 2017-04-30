@@ -65,16 +65,25 @@ a{
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .hello{
   text-align: center;
+  margin-top: -251.8px;
+  padding-bottom: 50px;
 }
 
 .main-title{
   font-size: 7em;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none; 
+  -khtml-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
   color: white;
   .title-i{
     position: relative;
@@ -110,5 +119,87 @@ a{
       top: 25px;
       left: 8px;
     }
+  }
+}
+
+.slogan{
+  color: white;
+  font-size: 1.25em;
+}
+
+.cors-it{
+  width: 100%;
+  max-width: 850px;
+  > div{
+    display: flex;
+    position: relative;
+    input{
+      border-radius: 0;
+      border: none;
+      height: 50px;
+      padding: 5px 25px;
+      box-sizing: border-box;
+      display: inline-block;
+      &[type="text"]{
+        border-bottom: 5px solid  transparentize($color2, 0.5);
+        flex: 5;
+        padding-bottom: 2.5px;
+        font-size: 1em;
+        &:hover{
+          ~ .text-it{
+            &::before{
+              transform: translateX(10px)
+            }
+          }
+        }
+        &:focus{
+          border-bottom-color: $color2;
+          ~ .text-it{
+            &::before{
+              transform: translateX(30px);
+              animation: blink 1s ease infinite;
+              height: 25px;
+            }
+          }
+        }
+      }
+      &[type="submit"]{
+        min-width: 125px;
+        background: $color2;
+        text-align: center;
+        color: white;
+        font-size: 1em;
+        font-weight: bold;
+        font-family: $font3;
+      }
+
+    }
+  }
+}
+.text-it{
+  position: absolute;
+  left: -20px;
+  height: 50px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  &::before{
+    content: "";
+    width: 5px;
+    height: 50px;
+    background: $color2;
+    transition: 0.5s ease;
+  }
+}
+
+@keyframes blink{
+  0%{
+    background: $color2;
+  }
+  50%{
+     background: $gray;
+  }
+  100%{
+    background: $color2;
   }
 }
