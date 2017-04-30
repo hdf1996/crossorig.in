@@ -45,6 +45,7 @@ body{
 
 h1,h2,h3,h4,h5,h6{
   font-family: $font1;
+  font-weight: normal;
 }
 
 a{
@@ -55,3 +56,59 @@ a{
   }
 }
 
+.main-content{
+  margin: 0;
+}
+
+.main-section{
+  background: $color1;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.hello{
+  text-align: center;
+}
+
+.main-title{
+  font-size: 7em;
+  color: white;
+  .title-i{
+    position: relative;
+    &::before{
+      content: "";
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 25px;
+      left: 8px;
+    }
+    span{
+      color: white;
+      display: inline-flex;
+      align-items: flex-end;
+      height: 85px;
+      overflow: hidden;
+      position: relative;
+      top: 25px;
+    }
+  }
+  .title-n{
+    position: relative;
+    &::before{
+      content: "";
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 25px;
+      left: 8px;
+    }
+  }
+}
