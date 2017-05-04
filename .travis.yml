@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+    - 2.3.3
+before_install:
+    - "echo '--colour' > ~/.rspec"
+    - "echo 'gem: --no-document' > ~/.gemrc"
+    - gem update --system
+script:
+    - echo "hello world"
