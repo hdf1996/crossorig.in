@@ -1,3 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'sass', '3.4.23'
+gem 'capistrano'
+gem 'capistrano-bundler', '~> 1.2'
+gem 'sass'

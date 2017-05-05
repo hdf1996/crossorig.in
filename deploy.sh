@@ -7,4 +7,4 @@ chmod 600 ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa.pub
 ssh-add ~/.ssh/id_rsa
 ssh-keyscan -H 54.70.220.103 >> ~/.ssh/known_hosts
-ssh ubuntu@54.70.220.103
+cap production deploy
