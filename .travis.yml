@@ -1,9 +1,16 @@
 language: ruby
 rvm:
-    - 2.3.3
+  - 2.3.3
 before_install:
-    - "echo '--colour' > ~/.rspec"
-    - "echo 'gem: --no-document' > ~/.gemrc"
-    - gem update --system
+  - openssl aes-256-cbc -K $encrypted_10485440d0a6_key -iv $encrypted_10485440d0a6_iv
+    -in github_deploy_key.enc -out github_deploy_key -d
+  - echo '--colour' > ~/.rspec
+  - 'echo ''gem: --no-document'' > ~/.gemrc'
+  - gem update --system
 script:
-    - echo "hello world"
+  - echo "hello world"
+deploy:
+  provider: script
+  script: bash deploy.sh
+  on:
+    branch: master
