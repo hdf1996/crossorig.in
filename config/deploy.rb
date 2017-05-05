@@ -23,9 +23,13 @@ set :bundle_binstubs, -> { shared_path.join('bin') }
 namespace :sass do
   task :compile do
     on roles(:all) do |host|
-      execute "sass"
+      within release_path do
+        execute "sass css/main.scss css/main.css"
+      end
     end
   end
 end
 
-after "deploy:updated", "sass:compile"
+after "deploy:updated", :compile do
+  invoke "sass:compile"
+end
