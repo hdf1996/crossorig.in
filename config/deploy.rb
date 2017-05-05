@@ -24,7 +24,7 @@ namespace :sass do
   task :compile do
     on roles(:all) do |host|
       within release_path do
-        execute :sass, 'css/main.scss css/main.css'
+        execute :sass, 'public/css/main.scss public/css/main.css'
       end
     end
   end
