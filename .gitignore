@@ -1,4 +1,4 @@
 /lib/**/*
 /log/*
-"/log/.keep
+!/log/.keep
 /css/main.css
