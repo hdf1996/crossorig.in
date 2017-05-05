@@ -2,8 +2,6 @@ language: ruby
 rvm:
   - 2.3.3
 before_install:
-  - openssl aes-256-cbc -K $encrypted_10485440d0a6_key -iv $encrypted_10485440d0a6_iv
-    -in github_deploy_key.enc -out github_deploy_key -d
   - echo '--colour' > ~/.rspec
   - 'echo ''gem: --no-document'' > ~/.gemrc'
   - gem update --system
