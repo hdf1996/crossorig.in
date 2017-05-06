@@ -38,7 +38,7 @@ namespace :nginx do
   end
 end
 
-after "deploy:updated", :compile do
+after "deploy:published", :compile do
   invoke "sass:compile"
   invoke "nginx:restart"
 end
