@@ -29,8 +29,8 @@
 $font1: "Bookman Old Style";
 $font2: "Gotham Rounded";
 $font3: "Gotham Rounded Book";
-$color1: #26223D;
-$color2: #ECA72F;
+$color1: #212121;
+$color2: #ff3d00;
 $gray: #F4F4F4;
 
 
@@ -72,7 +72,7 @@ a{
 
 .hello{
   text-align: center;
-  margin-top: -251.8px;
+  margin-top: -151.8px;
   padding-bottom: 50px;
 }
 
@@ -85,29 +85,7 @@ a{
   -ms-user-select: none; 
   user-select: none;
   color: white;
-  .title-i{
-    position: relative;
-    display: inline-flex;
-    &::before{
-      content: "";
-      width: 16px;
-      height: 16px;
-      background: white;
-      border-radius: 50%;
-      position: absolute;
-      top: -20px;
-      left: 8px;
-      animation: i 5s cubic-bezier(.68,-0.55,.27,1.55) infinite;
-    }
-    span{
-      color: white;
-      display: inline-flex;
-      align-items: flex-end;
-      height: 85px;
-      overflow: hidden;
-      position: relative;
-    }
-  }
+  animation: opac 1s ease;
   .title-n{
     position: relative;
     &::before{
@@ -119,7 +97,7 @@ a{
       position: absolute;
       top: 25px;
       left: 8px;
-      animation: n 5s cubic-bezier(.68,-0.55,.27,1.55) infinite ;
+      animation: n 1s 1s cubic-bezier(.68,-0.55,.27,1.55);
     }
   }
 }
@@ -127,6 +105,8 @@ a{
 .slogan{
   color: white;
   font-size: 1.25em;
+  opacity: 0;
+  animation: opac 1s 1s ease forwards;
 }
 
 .cors-it{
@@ -143,25 +123,12 @@ a{
       box-sizing: border-box;
       display: inline-block;
       &[type="text"]{
-        border-bottom: 5px solid  transparentize($color2, 0.5);
         flex: 5;
-        padding-bottom: 2.5px;
         font-size: 1em;
-        &:hover{
-          ~ .text-it{
-            &::before{
-              transform: translateX(10px)
-            }
-          }
-        }
         &:focus{
           border-bottom-color: $color2;
           ~ .text-it{
-            &::before{
-              transform: translateX(30px);
-              animation: blink 1s  infinite ;
-              height: 25px;
-            }
+            height: 50px;
           }
         }
       }
@@ -192,9 +159,11 @@ a{
   &::before{
     content: "";
     width: 5px;
-    height: 50px;
     background: $color2;
     transition: 0.5s ease;
+    transform: translateX(30px);
+    animation: blink 1s  infinite ;
+    height: 25px;
   }
 }
 
@@ -210,42 +179,27 @@ a{
   }
 }
 
-@keyframes i{
-  0%{
-    transform: translate(0px,0);
-  }
-  15%{
-    transform: translate(30px,-20px);
-  }
-  40%{
-    transform: translate(95px, -20px)
-  }
-  70%{
-    transform: translate(95px, 0);
-  }
-  100%{
-    transform: translate(95px, 0);
-  }
 
-}
 @keyframes n{
   0%{
-    transform: translate(0px,0);
+    transform: translateY(0);
+    
   }
-  15%{
-    transform: translate(-30px,-20px);
+  50%{
+    transform: translateY(-15px);
   }
-  40%{
-    transform: translate(-95px, -20px)
-  }
-  70%{
-    transform: translate(-95px, 0);
+}
+
+@keyframes opac{
+  0%{
+    opacity: 0;
   }
   100%{
-    transform: translate(-95px, 0);
+    opacity: 1;
   }
-
 }
+
+
 
 
 @media screen and (max-width: 760px){
@@ -264,4 +218,20 @@ a{
   .cors-it > div input[type="submit"]{
     margin-top: 20px;
   }
+}
+
+
+.how{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.btn-how-it-works{
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  font-family: $font2;
 }
