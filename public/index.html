@@ -10,7 +10,7 @@
 
   <main class="main-content">
     <section class="main-section">
-      <article class="hello">
+      <article class="hey">
         <h1 class="main-title">
           Crossorig<span class="title-n">n</span>
         </h1>
@@ -31,9 +31,32 @@
          How it works?
         </button>
       </div>
+
+      <div class="back-color"></div>
     </section>
 
+    <section class="how-it-works">
+      <h1 class="title">
+        How it works
+      </h1>
+
+
+    </section>
+
+
   </main>
+
+
+
+<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript">
+  $(".btn-how-it-works").on('click', function(){
+    $('.main-section').addClass('bye');
+    $('.how-it-works').addClass('hello');
+  })
+
+</script>
 
 </body>
 </html>

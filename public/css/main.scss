@@ -58,6 +58,9 @@ a{
 
 .main-content{
   margin: 0;
+  overflow: hidden;
+  position: relative;
+
 }
 
 .main-section{
@@ -68,9 +71,26 @@ a{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: 1s 0.5s ease;
+  .back-color{
+    background: $color2;
+    min-height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
+    transition: 0.5s ease;
+  }
+  &.bye{
+    transform: translateX(-100%);
+    .back-color{
+      transform: translateX(0);
+    }
+  }
 }
 
-.hello{
+.hey{
   text-align: center;
   margin-top: -151.8px;
   padding-bottom: 50px;
@@ -234,4 +254,20 @@ a{
   text-align: center;
   color: white;
   font-family: $font2;
+}
+
+
+.how-it-works{
+  transform: translateX(100%);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  transition: 1s 0.5s ease;
+  background: $gray;
+  &.hello{
+    transform: translateX(0%);
+  }
 }
