@@ -38,7 +38,16 @@ namespace :nginx do
   end
 end
 
+namespace :puma do
+  task :restart do
+    on roles(:app) do
+      execute "bundle exec puma --config config/puma.rb"
+    end
+  end
+end
+
 after "deploy:published", :compile do
   invoke "sass:compile"
+  invoke "puma:restart"
   invoke "nginx:restart"
 end

@@ -5,6 +5,12 @@ require 'pry'
 set :protection, :except => :path_traversal
 set :port, 3000
 
+require 'sinatra'
+
+configure {
+  set :server, :puma
+}
+
 NON_PROXIABLE_HEADERS = ["Set-Cookie", "Connection", "Transfer-Encoding"].freeze
 
 get %r{/(http|https)(:)//(.*)} do

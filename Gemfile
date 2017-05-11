@@ -8,6 +8,8 @@ gem 'sass'
 gem 'sinatra'
 gem 'httparty'
 
+gem "puma"
+
 group :development do
   gem 'pry'
   gem 'shotgun'
