@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './app'
+require './server/ruby/main'
 
 run Pumatra

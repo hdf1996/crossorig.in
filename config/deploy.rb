@@ -41,7 +41,9 @@ end
 namespace :puma do
   task :restart do
     on roles(:app) do
-      execute "puma", " --config config/puma.rb"
+      within release_path do
+        execute "puma", " --config config/puma.rb"
+      end
     end
   end
 end
