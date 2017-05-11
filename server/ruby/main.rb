@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'sinatra'
 require 'httparty'
 require 'pry'
@@ -5,7 +7,6 @@ require 'pry'
 set :protection, :except => :path_traversal
 set :port, 3000
 
-require 'sinatra'
 
 configure {
   set :server, :puma
