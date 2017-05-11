@@ -7,10 +7,6 @@ set :port, 3000
 
 NON_PROXIABLE_HEADERS = ["Set-Cookie", "Connection", "Transfer-Encoding"].freeze
 
-before do
-
-end
-
 get %r{/(http|https)(:)//(.*)} do
   proxied_response = HTTParty.get("#{params["captures"].first}://#{params['captures'].last}",
     query: request.env['rack.request.query_hash'])
