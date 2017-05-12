@@ -52,7 +52,7 @@ namespace :puma do
     end
   end
 end
-
+require 'pry'
 binding.pry
 after "deploy:published", :compile do
   invoke "sass:compile"
