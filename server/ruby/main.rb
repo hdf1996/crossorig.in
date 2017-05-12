@@ -13,6 +13,8 @@ configure {
 
 
 class Pumatra < Sinatra::Base
+
+  enable :logging
   NON_PROXIABLE_HEADERS = ["Set-Cookie", "Connection", "Transfer-Encoding"].freeze
 
   get %r{/(http|https)(:)//(.*)} do
