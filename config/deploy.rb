@@ -42,6 +42,7 @@ namespace :puma do
   task :restart do
     on roles(:app) do
       within release_path do
+        execute "kill $(cat tmp/puma/pid)"
         execute "bundle", " install --quiet --path vendor/bundle"
         execute "bundle", "exec puma -d --config config/puma.rb"
       end
