@@ -42,6 +42,8 @@ namespace :puma do
   task :restart do
     on roles(:app) do
       within release_path do
+        execute "bundle", " install --path vendor/bundle"
+        execute "mkdir -p tmp/puma"
         execute "puma", " --config config/puma.rb"
       end
     end
