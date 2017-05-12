@@ -41,9 +41,9 @@ end
 namespace :puma do
   task :restart do
     on roles(:app) do
-      within previous_release do
-        execute "kill $(cat tmp/puma/pid)"
-      end
+      # within previous_release do
+      #   execute "kill $(cat tmp/puma/pid)"
+      # end
       
       within release_path do
         execute "bundle", " install --quiet --path vendor/bundle"
@@ -53,6 +53,7 @@ namespace :puma do
   end
 end
 
+binding.pry
 after "deploy:published", :compile do
   invoke "sass:compile"
   invoke "puma:restart"
