@@ -44,6 +44,7 @@ namespace :puma do
       within release_path do
         execute "bundle", " install --path vendor/bundle"
         execute "mkdir -p tmp/puma"
+        execute "ls tmp/puma"
         execute "bundle", "exec puma --config config/puma.rb"
       end
     end
