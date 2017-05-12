@@ -39,6 +39,14 @@ namespace :nginx do
 end
 
 namespace :puma do
+  task :start do
+    on roles(:app) do
+      within release_path do
+        execute "bundle", " install --quiet --path vendor/bundle"
+        execute "bundle", "exec puma -d --config config/puma.rb"
+      end
+    end
+  end
   task :restart do
     on roles(:app) do
       within release_path do
