@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'sinatra'
+require 'sinatra/logger'
 require 'httparty'
 
 set :protection, :except => :path_traversal
@@ -11,15 +12,9 @@ configure {
   set :server, :puma
 }
 
-
 class Pumatra < Sinatra::Base
 
-  configure do
-    enable :logging
-    file = File.new("/home/ubuntu/app/current/log/#{settings.environment}.log", 'a+')
-    file.sync = true
-    use Rack::CommonLogger, file
-  end
+  logger filename: "log/#{settings.environment}.log", level: :trace
 
   NON_PROXIABLE_HEADERS = ["Set-Cookie", "Connection", "Transfer-Encoding"].freeze
 

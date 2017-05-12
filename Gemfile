@@ -9,6 +9,7 @@ gem 'sinatra'
 gem 'httparty'
 
 gem "puma"
+gem 'sinatra-logger', '>= 0.2.6'
 
 group :development do
   gem 'pry'
