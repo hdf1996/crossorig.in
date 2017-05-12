@@ -2,7 +2,8 @@
 
 require 'sinatra'
 require 'httparty'
-
+require 'logger'
+ 
 set :protection, :except => :path_traversal
 set :port, 3000
 
@@ -14,7 +15,17 @@ configure {
 
 class Pumatra < Sinatra::Base
 
-  enable :logging
+  ::Logger.class_eval { alias :write :'<<' }
+  access_log = ::File.join(::File.dirname(::File.expand_path(__FILE__)),'..','log','access.log')
+  access_logger = ::Logger.new(access_log)
+  error_logger = ::File.new(::File.join(::File.dirname(::File.expand_path(__FILE__)),'..','log','error.log'),"a+")
+  error_logger.sync = true
+ 
+  configure do
+    use ::Rack::CommonLogger, access_logger
+  end
+ 
+
   NON_PROXIABLE_HEADERS = ["Set-Cookie", "Connection", "Transfer-Encoding"].freeze
 
   get %r{/(http|https)(:)//(.*)} do
