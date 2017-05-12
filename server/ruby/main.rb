@@ -25,6 +25,10 @@ class Pumatra < Sinatra::Base
     use ::Rack::CommonLogger, access_logger
   end
  
+   
+  before {
+    env["rack.errors"] =  error_logger
+  }
 
   NON_PROXIABLE_HEADERS = ["Set-Cookie", "Connection", "Transfer-Encoding"].freeze
 
