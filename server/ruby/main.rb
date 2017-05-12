@@ -18,7 +18,7 @@ class Pumatra < Sinatra::Base
   ::Logger.class_eval { alias :write :'<<' }
   access_log = ::File.join('log','access.log')
   access_logger = ::Logger.new(access_log)
-  error_logger = ::File.new(::File.join(::File.dirname(::File.expand_path(__FILE__)),'..','log','error.log'),"a+")
+  error_logger = ::File.new(::File.join('log','error.log'),"a+")
   error_logger.sync = true
  
   configure do
