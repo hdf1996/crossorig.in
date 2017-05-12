@@ -15,7 +15,7 @@ set :bundle_bins, fetch(:bundle_bins, []).push('sass')
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w{rake gem bundle ruby rails sass puma}
+set :rbenv_map_bins, %w{rake gem bundle ruby rails sass puma pumactl}
 set :rbenv_roles, :all # default value
 
 set :bundle_binstubs, -> { shared_path.join('bin') }
@@ -42,9 +42,11 @@ namespace :puma do
   task :restart do
     on roles(:app) do
       within release_path do
-        execute "bundle", " install --path vendor/bundle"
-        execute "mkdir -p tmp/puma"
-        execute "ls tmp/puma"
+        execute "bundle", " install --quiet --path vendor/bundle"
+        execute "pwd"
+        execute "mkdir -p ./tmp/puma"
+      end
+      within release_path do
         execute "bundle", "exec puma --config config/puma.rb"
       end
     end
