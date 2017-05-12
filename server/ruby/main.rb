@@ -2,7 +2,6 @@
 
 require 'sinatra'
 require 'httparty'
-require 'pry'
 
 set :protection, :except => :path_traversal
 set :port, 3000

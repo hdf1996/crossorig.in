@@ -44,7 +44,7 @@ namespace :puma do
       within release_path do
         execute "bundle", " install --path vendor/bundle"
         execute "mkdir -p tmp/puma"
-        execute "puma", " --config config/puma.rb"
+        execute "bundle", "exec puma --config config/puma.rb"
       end
     end
   end
@@ -53,5 +53,5 @@ end
 after "deploy:published", :compile do
   invoke "sass:compile"
   invoke "puma:restart"
-  invoke "nginx:restart"
+  #invoke "nginx:restart"
 end
