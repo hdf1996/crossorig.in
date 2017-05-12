@@ -16,7 +16,7 @@ class Pumatra < Sinatra::Base
 
   configure do
     enable :logging
-    file = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
+    file = File.new("/home/ubuntu/app/current/log/#{settings.environment}.log", 'a+')
     file.sync = true
     use Rack::CommonLogger, file
   end
