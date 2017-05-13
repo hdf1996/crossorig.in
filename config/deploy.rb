@@ -46,7 +46,7 @@ namespace :node do
       end
     end
   end
-  task :start do
+  task :restart do
     on roles(:app) do
       within release_path do
         invoke "node:stop"
