@@ -30,7 +30,7 @@ namespace :sass do
   end
 end
 
-namespace :puma do
+namespace :node do
   task :start do
     on roles(:app) do
       within release_path do
