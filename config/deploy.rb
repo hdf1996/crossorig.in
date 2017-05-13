@@ -21,7 +21,7 @@ set :rbenv_roles, :all # default value
 set :bundle_binstubs, -> { shared_path.join('bin') }
 
 set :nvm_type, :user # or :system, depends on your nvm setup
-set :nvm_node, 'v0.10.21'
+set :nvm_node, 'v7.10.0'
 set :nvm_map_bins, %w{node npm yarn pm2}
 
 namespace :sass do
@@ -48,7 +48,7 @@ namespace :node do
   task :start do
     on roles(:app) do
       within release_path do
-        execute "pm2 start server/server.js"
+        execute "pm2", " start server/server.js"
       end
     end
   end
@@ -56,7 +56,7 @@ namespace :node do
   task :stop do
     on roles(:app) do
       within release_path do
-        execute "pm2 stop server/server.js"
+        execute "pm2", " stop server/server.js"
       end
     end
   end
