@@ -56,7 +56,7 @@ namespace :node do
   task :stop do
     on roles(:app) do
       within release_path do
-        execute "pm2", " stop /home/ubuntu/app/current/server/server.js"
+        execute "pm2", " stop server"
       end
     end
   end
