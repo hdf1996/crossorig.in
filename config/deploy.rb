@@ -58,6 +58,6 @@ end
 
 after "deploy:published", :compile do
   invoke "sass:compile"
-  invoke "puma:restart"
+  invoke "node:restart"
   invoke "nginx:restart"
 end
