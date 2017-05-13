@@ -34,6 +34,16 @@ namespace :sass do
   end
 end
 
+namespace :nginx do
+  task :restart do
+    on roles(:all) do |host|
+      within release_path do
+        execute "sudo service nginx restart"
+      end
+    end
+  end
+end
+
 namespace :node do
   task :start do
     on roles(:app) do
