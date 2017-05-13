@@ -43,7 +43,7 @@ namespace :puma do
     on roles(:app) do
       within release_path do
         execute "bundle", " install --quiet --path vendor/bundle"
-        execute "bundle", "exec puma --config config/puma.rb"
+        execute "bundle", "exec puma -d --config config/puma.rb"
       end
     end
   end
