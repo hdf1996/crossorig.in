@@ -30,29 +30,27 @@ namespace :sass do
   end
 end
 
-namespace :nginx do
-  task :restart do
-    on roles(:app) do
-      execute "sudo service nginx restart"
-    end
-  end
-end
-
 namespace :puma do
   task :start do
     on roles(:app) do
       within release_path do
-        execute "bundle", " install --quiet --path vendor/bundle"
-        execute "bundle", "exec puma -d --config config/puma.rb"
+        execute ""
       end
     end
   end
-  task :restart do
+
+  task :stop do
     on roles(:app) do
       within release_path do
-        execute "pkill -f puma"
-        execute "bundle", " install --quiet --path vendor/bundle"
-        execute "bundle", "exec puma -d --config config/puma.rb"
+        execute ""
+      end
+    end
+  end
+  task :start do
+    on roles(:app) do
+      within release_path do
+        invoke "node:stop"
+        invoke "node:start"
       end
     end
   end
