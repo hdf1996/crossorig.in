@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-app.get('/(http|https)(:)(.*)', function (req, res) {
+app.get(/^\/(https?:\/\/.+)/, function (req, res) {
   res.send('Hello World!');
 });
 
