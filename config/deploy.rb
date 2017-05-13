@@ -56,7 +56,7 @@ namespace :node do
   task :stop do
     on roles(:app) do
       within release_path do
-        execute "pm2", " stop server"
+        execute "pm2", " kill"
       end
     end
   end

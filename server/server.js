@@ -4,6 +4,7 @@ var app = express();
 
 app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
   var url = req.params[0] + "://" + req.params[2];
+  console.log("Request url GET: " + url)
   request(url).pipe(res);
 });
 
