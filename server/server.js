@@ -9,7 +9,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Request-Method', 'GET, PATCH, PUT, POST, OPTIONS, DELETE');
   res.header('Doge', 'SUCH CORS');
-  request(url).pipe(res);
+  request(url, () => { console.log("Finished GET " + url) }).pipe(res);
 });
 
 app.listen(3000, function () {
