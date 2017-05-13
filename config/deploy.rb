@@ -34,7 +34,7 @@ namespace :node do
   task :start do
     on roles(:app) do
       within release_path do
-        execute ""
+        execute "pm2 start server/server.js"
       end
     end
   end
@@ -42,7 +42,7 @@ namespace :node do
   task :stop do
     on roles(:app) do
       within release_path do
-        execute ""
+        execute "pm2 stop server/server.js"
       end
     end
   end
