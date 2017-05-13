@@ -20,6 +20,10 @@ set :rbenv_roles, :all # default value
 
 set :bundle_binstubs, -> { shared_path.join('bin') }
 
+set :nvm_type, :user # or :system, depends on your nvm setup
+set :nvm_node, 'v0.10.21'
+set :nvm_map_bins, %w{node npm yarn pm2}
+
 namespace :sass do
   task :compile do
     on roles(:all) do |host|
