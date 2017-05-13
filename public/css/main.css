@@ -44,7 +44,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: 1s 0.5s ease; }
+  transition: 0.5s 0.5s ease; }
   .main-section .back-color {
     background: #ff3d00;
     min-height: 100%;
@@ -191,9 +191,64 @@ a {
   width: 100%;
   min-height: 100vh;
   overflow-y: auto;
-  transition: 1s 0.5s ease;
-  background: #F4F4F4; }
+  transition: 0.5s 0.3s ease;
+  background: #F4F4F4;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center; }
   .how-it-works.hello {
     transform: translateX(0%); }
+  .how-it-works .title {
+    position: relative; }
+    .how-it-works .title span {
+      font-size: 3em;
+      display: inline-block;
+      position: relative;
+      overflow: hidden; }
+      .how-it-works .title span.solid-text::after {
+        content: "";
+        width: 100%;
+        transform: translateX(-100%);
+        height: 3px;
+        margin: 5px 0;
+        display: block;
+        background: #ff3d00;
+        animation: line-crazy 0.5s cubic-bezier(1, 0, 0, 1) infinite; }
+      .how-it-works .title span.shadow-text {
+        position: absolute;
+        left: calc(50% - 307px);
+        top: calc(50% - 61px);
+        color: #ff3d00;
+        z-index: -1; }
+  .how-it-works.hello .title .solid-text {
+    animation: how-up 1s 2s ease forwards; }
+  .how-it-works.hello .title .shadow-text {
+    animation: shadow-text 2s 2s ease forwards; }
+
+@keyframes line-crazy {
+  0% {
+    transform: translateX(-100%); }
+  100% {
+    transform: translateX(100%); } }
+@keyframes how-up {
+  0% {
+    transform: translateY(0%) scale(1); }
+  100% {
+    transform: translateY(-350%) scale(0.5); } }
+@keyframes shadow-text {
+  0% {
+    opacity: 1; }
+  25% {
+    color: #ff3d00;
+    opacity: 1;
+    background: #ff3d00; }
+  50% {
+    font-family: "Bookman Old Style";
+    background: #ff3d00; }
+  75% {
+    background: #ff3d00; }
+  100% {
+    background: #ff3d00; } }
 
 /*# sourceMappingURL=main.css.map */
