@@ -21,7 +21,7 @@
 
       <form class="cors-it" doge-attribute="what">
         <div>
-          <input type="text" name="corsit" placeholder="Paste your URL here"><input type="submit" value="Send">
+          <input type="text" name="corsit" placeholder="Of CORS! No problem."><input type="submit" value="Send">
           <div class="text-it"></div>
         </div>
       </form>
@@ -43,8 +43,28 @@
         <span class="shadow-text">
           How it works
         </span>
-
       </h1>
+
+      <article class="example">
+        <h1 class="example-title">
+            Example:
+        </h1>
+        <article class="example-content">
+          <p>
+            $.ajax({
+              <span class="highlight">url:</span> 'https://crossorig.in/http://your-domain',
+              <span class="highlight">method:</span> 'GET',
+              <span class="highlight">success:</span> function (data) {
+                console.log('Look mom! I've fixed CORS');
+                console.log(data);
+              }
+            });
+          </p>
+          <!-- <a href="whatsapp://send?text=Hello%20World!">
+            Whatsapp!
+          </a> -->
+        </article>
+      </article>
 
 
     </section>

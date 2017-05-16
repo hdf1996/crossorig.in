@@ -198,7 +198,10 @@ a {
   align-items: center;
   justify-content: center; }
   .how-it-works.hello {
-    transform: translateX(0%); }
+    transform: translateX(0%);
+    animation: hello-dark 0.5s ease forwards;
+    flex-direction: column;
+    flex-wrap: wrap; }
   .how-it-works .title {
     position: relative; }
     .how-it-works .title span {
@@ -224,7 +227,26 @@ a {
   .how-it-works.hello .title .solid-text {
     animation: how-up 1s 2s ease forwards; }
   .how-it-works.hello .title .shadow-text {
-    animation: shadow-text 2s 2s ease forwards; }
+    animation: shadow-text 3s 2s ease forwards; }
+  .how-it-works.hello .example-title {
+    animation: example-title 1s 3s ease forwards;
+    display: inline-block;
+    opacity: 0;
+    color: white; }
+  .how-it-works.hello .example-content {
+    animation: example-content 1s 2s ease forwards;
+    padding: 30px 35px;
+    background: black;
+    color: #F4F4F4;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(-100%);
+    max-width: 600px;
+    transition: 0.3s ease; }
+    .how-it-works.hello .example-content:hover {
+      padding: 30px 55px; }
+    .how-it-works.hello .example-content .highlight {
+      color: #ff3d00; }
 
 @keyframes line-crazy {
   0% {
@@ -235,20 +257,47 @@ a {
   0% {
     transform: translateY(0%) scale(1); }
   100% {
-    transform: translateY(-350%) scale(0.5); } }
+    transform: translateY(-160%) scale(0.5); } }
 @keyframes shadow-text {
   0% {
     opacity: 1; }
-  25% {
+  15% {
     color: #ff3d00;
     opacity: 1;
     background: #ff3d00; }
-  50% {
+  30% {
     font-family: "Bookman Old Style";
     background: #ff3d00; }
-  75% {
+  45% {
     background: #ff3d00; }
   100% {
-    background: #ff3d00; } }
+    background: #ff3d00;
+    opacity: .02;
+    color: #fff3;
+    transform: translateY(-200%); } }
+@keyframes hello-dark {
+  0% {
+    background: white; }
+  100% {
+    background: #212121; } }
+@keyframes example-title {
+  0% {
+    background: #212121;
+    color: black;
+    transform: translate(0%, 0%);
+    opacity: 0; }
+  100% {
+    background: #212121;
+    color: white !important;
+    transform: translateY(-333%);
+    color: black;
+    opacity: 0.75; } }
+@keyframes example-content {
+  0% {
+    opacity: 0;
+    transform: translateY(150px); }
+  100% {
+    opacity: 1;
+    transform: translateY(-150%) !important; } }
 
 /*# sourceMappingURL=main.css.map */

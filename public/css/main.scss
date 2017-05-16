@@ -273,6 +273,9 @@ a{
   justify-content: center;
   &.hello{
     transform: translateX(0%);
+    animation:  hello-dark 0.5s ease forwards;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
   .title{
     position: relative;
@@ -309,9 +312,34 @@ a{
         animation: how-up 1s 2s ease forwards;
       }
       .shadow-text{
-        animation: shadow-text 2s 2s ease forwards;
+        animation: shadow-text 3s 2s ease forwards;
       }
     }
+    .example-title{
+      animation: example-title 1s 3s ease forwards;
+      display: inline-block;
+      opacity: 0;
+      color: white;
+    }
+    .example-content{
+      animation: example-content 1s 2s ease forwards;
+      padding: 30px 35px;
+      background: black;
+      color: $gray;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(-100%);
+      max-width: 600px;
+      transition: 0.3s ease;
+      &:hover{
+        padding: 30px 55px;
+      }
+      .highlight{
+        color: $color2;
+      }
+    }
+
+
   }
 }
 
@@ -332,7 +360,7 @@ a{
 
   }
   100%{
-      transform: translateY(-350%) scale(0.5);
+      transform: translateY(-160%) scale(0.5);
 
   }
 }
@@ -341,22 +369,65 @@ a{
   0%{
     opacity: 1;
   }
-  25%{
+  15%{
     color: $color2;
     opacity: 1;
     background: $color2;
   }
-  50%{
+  30%{
     font-family: $font1;
     background: $color2;
   }
-  75%{
+  45%{
     background: $color2;
   }
   100%{
     background: $color2;
+    opacity: .02;
+    color: #fff3;
+    transform: translateY(-200%);
+
   }
 
+}
 
+@keyframes hello-dark{
+  0%{
+    background: white;
+  }
+  100%{
+    background: $color1;
+  }
+
+}
+@keyframes example-title{
+  0%{
+    background: $color1;
+    color: black;
+    transform: translate(0%, 0%);
+    opacity: 0;
+  }
+  100%{
+    background: $color1;
+    color: white !important;
+    transform: translateY(-333%);
+    color: black;
+    opacity: 0.75;
+  }
+
+}
+
+
+@keyframes example-content{
+
+  0%{
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(-150%) !important;
+
+  }
 
 }
