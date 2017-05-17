@@ -50,16 +50,11 @@
             Example:
         </h1>
         <article class="example-content">
-          <p>
-            $.ajax({
-              <span class="highlight">url:</span> 'https://crossorig.in/http://your-domain',
-              <span class="highlight">method:</span> 'GET',
-              <span class="highlight">success:</span> function (data) {
-                console.log('Look mom! I've fixed CORS');
-                console.log(data);
-              }
-            });
+          <p id="example-text"">$.ajax({<span class="highlight">url:</span> 'https://crossorig.in/http://your-domain',<span class="highlight">method:</span> 'GET',<span class="highlight">success:</span> function (data) {console.log('Look mom! I've fixed CORS');console.log(data);}});
           </p>
+          <button class="btn-copy" onclick="copyToClipboard('#example-text')">
+            Copy
+          </button>
           <!-- <a href="whatsapp://send?text=Hello%20World!">
             Whatsapp!
           </a> -->
@@ -82,6 +77,14 @@
     $('.how-it-works').addClass('hello');
   })
 
+
+    function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+  }
 </script>
 
 </body>

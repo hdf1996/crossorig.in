@@ -232,21 +232,34 @@ a {
     animation: example-title 1s 3s ease forwards;
     display: inline-block;
     opacity: 0;
-    color: white; }
+    color: white;
+    font-size: 1.25em; }
   .how-it-works.hello .example-content {
     animation: example-content 1s 2s ease forwards;
-    padding: 30px 35px;
-    background: black;
-    color: #F4F4F4;
-    margin: 0 auto;
+    position: relative;
     opacity: 0;
     transform: translateY(-100%);
     max-width: 600px;
     transition: 0.3s ease; }
-    .how-it-works.hello .example-content:hover {
-      padding: 30px 55px; }
+    .how-it-works.hello .example-content p {
+      padding: 30px 35px;
+      background: #F4F4F4;
+      color: black;
+      margin: 0 auto;
+      box-shadow: 10px 10px 0px black; }
     .how-it-works.hello .example-content .highlight {
-      color: #ff3d00; }
+      font-weight: bold; }
+
+.btn-copy {
+  width: 150px;
+  padding: 15px 10px;
+  border: none;
+  background: #ff3d00;
+  color: white;
+  cursor: pointer;
+  box-shadow: 10px 10px 0px black; }
+  .btn-copy:hover {
+    background: #ff5c29; }
 
 @keyframes line-crazy {
   0% {
@@ -257,7 +270,9 @@ a {
   0% {
     transform: translateY(0%) scale(1); }
   100% {
-    transform: translateY(-160%) scale(0.5); } }
+    transform: translateY(-160%) scale(0.5);
+    text-shadow: 5px 5px 0px black;
+    color: white; } }
 @keyframes shadow-text {
   0% {
     opacity: 1; }
@@ -274,7 +289,7 @@ a {
     background: #ff3d00;
     opacity: .02;
     color: #fff3;
-    transform: translateY(-200%); } }
+    transform: translateY(-55%); } }
 @keyframes hello-dark {
   0% {
     background: white; }
@@ -282,16 +297,13 @@ a {
     background: #212121; } }
 @keyframes example-title {
   0% {
-    background: #212121;
     color: black;
-    transform: translate(0%, 0%);
+    transform: translateY(0%);
     opacity: 0; }
   100% {
-    background: #212121;
-    color: white !important;
-    transform: translateY(-333%);
-    color: black;
-    opacity: 0.75; } }
+    color: white;
+    opacity: 1;
+    transform: translateY(-750%); } }
 @keyframes example-content {
   0% {
     opacity: 0;

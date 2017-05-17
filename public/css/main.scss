@@ -320,28 +320,50 @@ a{
       display: inline-block;
       opacity: 0;
       color: white;
+      font-size: 1.25em;
     }
     .example-content{
       animation: example-content 1s 2s ease forwards;
-      padding: 30px 35px;
-      background: black;
-      color: $gray;
-      margin: 0 auto;
+      p{
+        padding: 30px 35px;
+        background: $gray;
+        color: black;
+        margin: 0 auto;
+        box-shadow: 10px 10px 0px black;
+      }
+      position: relative;
       opacity: 0;
       transform: translateY(-100%);
       max-width: 600px;
       transition: 0.3s ease;
-      &:hover{
-        padding: 30px 55px;
-      }
+      
       .highlight{
-        color: $color2;
+        font-weight: bold;
       }
     }
 
 
   }
 }
+
+
+.btn-copy{
+  width: 150px;
+  padding: 15px 10px;
+  border: none;
+  background: $color2;
+  color: white;
+  cursor: pointer;
+  box-shadow: 10px 10px 0px black;
+  &:hover{
+    background: lighten($color2, 8)
+  }
+}
+
+
+
+
+
 
 @keyframes line-crazy{
   0%{
@@ -361,7 +383,8 @@ a{
   }
   100%{
       transform: translateY(-160%) scale(0.5);
-
+      text-shadow: 5px 5px 0px black;
+      color: white;
   }
 }
 
@@ -385,7 +408,7 @@ a{
     background: $color2;
     opacity: .02;
     color: #fff3;
-    transform: translateY(-200%);
+    transform: translateY(-55%);
 
   }
 
@@ -402,17 +425,15 @@ a{
 }
 @keyframes example-title{
   0%{
-    background: $color1;
     color: black;
-    transform: translate(0%, 0%);
+    transform: translateY(0%);
     opacity: 0;
   }
   100%{
-    background: $color1;
-    color: white !important;
-    transform: translateY(-333%);
-    color: black;
-    opacity: 0.75;
+    color: white;
+    opacity: 1;
+    transform: translateY(-750%);
+
   }
 
 }
