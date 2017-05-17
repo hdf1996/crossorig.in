@@ -53,7 +53,13 @@
           <p id="example-text"">$.ajax({<span class="highlight">url:</span> 'https://crossorig.in/http://your-domain',<span class="highlight">method:</span> 'GET',<span class="highlight">success:</span> function (data) {console.log('Look mom! I've fixed CORS');console.log(data);}});
           </p>
           <button class="btn-copy" onclick="copyToClipboard('#example-text')">
-            Copy
+            <span>
+              Copy
+            </span>
+            <span class="copied-text">
+              Copied &#10003;
+            </span>
+
           </button>
           <!-- <a href="whatsapp://send?text=Hello%20World!">
             Whatsapp!
@@ -77,6 +83,7 @@
     $('.how-it-works').addClass('hello');
   })
 
+  var $flag = false;
 
     function copyToClipboard(element) {
     var $temp = $("<input>");
@@ -84,6 +91,14 @@
     $temp.val($(element).text()).select();
     document.execCommand("copy");
     $temp.remove();
+    $flag = true;
+
+    if($flag){
+      $('.btn-copy').addClass('copied');
+      setTimeout(function(){
+        $('.btn-copy').removeClass('copied');
+      }, 1000)
+    }
   }
 </script>
 

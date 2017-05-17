@@ -257,9 +257,26 @@ a {
   background: #ff3d00;
   color: white;
   cursor: pointer;
-  box-shadow: 10px 10px 0px black; }
+  box-shadow: 10px 10px 0px black;
+  position: relative;
+  overflow: hidden;
+  transition: 0.5s ease; }
+  .btn-copy:focus, .btn-copy:active {
+    box-shadow: 0px 0px 0px black; }
   .btn-copy:hover {
     background: #ff5c29; }
+  .btn-copy .copied-text {
+    position: absolute;
+    left: 29%;
+    color: white;
+    transform: translateX(-300%);
+    transition: 0.3s ease; }
+  .btn-copy.copied {
+    background: #00e676;
+    color: transparent;
+    box-shadow: 0px 0px 0px #ff3d00; }
+    .btn-copy.copied .copied-text {
+      transform: translateX(0); }
 
 @keyframes line-crazy {
   0% {

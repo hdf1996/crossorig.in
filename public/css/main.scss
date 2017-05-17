@@ -355,8 +355,29 @@ a{
   color: white;
   cursor: pointer;
   box-shadow: 10px 10px 0px black;
+  position: relative;
+  overflow: hidden;
+  transition: 0.5s ease;
+  &:focus, &:active{
+    box-shadow: 0px 0px 0px black;
+  }
   &:hover{
     background: lighten($color2, 8)
+  }
+  .copied-text{
+    position: absolute;
+    left: 29%;
+    color: white;
+    transform: translateX(-300%);
+    transition: 0.3s ease;
+  }
+  &.copied{
+    background: #00e676;
+    color: transparent;
+    box-shadow: 0px 0px 0px $color2;
+    .copied-text{
+      transform: translateX(0);
+    }
   }
 }
 
