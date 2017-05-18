@@ -94,6 +94,9 @@ a{
   text-align: center;
   margin-top: -151.8px;
   padding-bottom: 50px;
+  @media screen and(max-width: 991px){
+    margin-top: 0;
+  }
 }
 
 .main-title{
@@ -227,7 +230,10 @@ a{
     font-size: 3em;
     .title-i, .title-n{
       &::before{
-        content: none;
+        width: 8px;
+        height: 8px;
+        top: 8px;
+        left: 4px;
       }
     }
   }
@@ -274,6 +280,9 @@ a{
   &.hello{
     transform: translateX(0%);
     animation:  hello-dark 0.5s ease forwards;
+    @media screen and(max-width: 991px){
+      animation:  mobile-hello-dark 0.5s ease forwards;
+    }
     flex-direction: column;
     flex-wrap: wrap;
   }
@@ -284,6 +293,10 @@ a{
       display: inline-block;
       position: relative;
       overflow: hidden;
+      @media screen and (max-width: 991px){
+        font-size: 1.5em;
+        margin-bottom: 50px;
+      }
       &.solid-text{
         &::after{
           content: "";
@@ -293,12 +306,13 @@ a{
           margin: 5px 0;
           display: block;
           background: $color2;
-          animation: line-crazy 0.5s cubic-bezier(1,0,0,1) infinite;
+          animation: line-crazy 0.5s cubic-bezier(1,0,0,1);
+          animation-iteration-count: 6 !important;
         }
       }
       &.shadow-text{
         position: absolute;
-        left: calc(50% - 307px);
+        left: 0;
         top: calc(50% - 61px);
         color: $color2;
         z-index: -1;
@@ -310,13 +324,22 @@ a{
     .title{
       .solid-text{
         animation: how-up 1s 2s ease forwards;
+        @media screen and(max-width: 991px){
+          animation: mobile-how-up 1s 2s ease forwards;
+        }
       }
       .shadow-text{
         animation: shadow-text 3s 2s ease forwards;
+        @media screen and(max-width: 991px){
+          animation: mobile-shadow-text 3s 2s ease forwards;
+        }
       }
     }
     .example-title{
       animation: example-title 1s 3s ease forwards;
+      @media screen and(max-width: 991px){
+        animation: mobile-example-title 1s 3s ease forwards;
+      }
       display: inline-block;
       opacity: 0;
       color: white;
@@ -324,6 +347,11 @@ a{
     }
     .example-content{
       animation: example-content 1s 2s ease forwards;
+      @media screen and(max-width: 991px){
+        animation: mobile-example-content 1s 2s ease forwards;
+        transform: translateY(0%);
+        width: 100%;
+      }
       p{
         padding: 30px 35px;
         background: $gray;
@@ -358,6 +386,13 @@ a{
   position: relative;
   overflow: hidden;
   transition: 0.5s ease;
+  @media screen and(max-width: 991px){
+    width: 100%;
+    padding: 20px 10px;
+    .copied-text{
+      left: 40% !important;
+    }
+  }
   &:focus, &:active{
     box-shadow: 0px 0px 0px black;
   }
@@ -368,7 +403,7 @@ a{
     position: absolute;
     left: 29%;
     color: white;
-    transform: translateX(-300%);
+    transform: translateX(-320%);
     transition: 0.3s ease;
   }
   &.copied{
@@ -378,6 +413,43 @@ a{
     .copied-text{
       transform: translateX(0);
     }
+  }
+}
+
+
+.btn-whatsapp{
+  background: #25D366;
+  color: white;
+  margin-left: 25px;
+  padding: 14px 20px;
+  display: inline-block;
+  text-decoration: none;
+  width: 110px;
+  padding-left: 40px;
+  text-align: center;
+  position: relative;
+  box-shadow: 10px 10px 0px black;
+  transition: 0.5s ease;
+  @media screen and(max-width: 991px){
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    padding: 20px 10px;
+    .share-icon{
+      top: 13px !important;
+    }
+  }
+  &:hover{
+    background: lighten(#25D366, 8);
+  }
+  .share-icon{
+    fill: white;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 10px;
+    top: 8px;
+
   }
 }
 
@@ -396,6 +468,8 @@ a{
 
 }
 
+/* ////////////// */
+
 @keyframes how-up{
   
   0%{
@@ -408,6 +482,20 @@ a{
       color: white;
   }
 }
+@keyframes mobile-how-up{
+  
+  0%{
+      transform: translateY(0%) scale(1);
+
+  }
+  100%{
+      transform: translateY(20px) scale(0.7);
+      text-shadow: 5px 5px 0px black;
+      color: white;
+  }
+}
+/* //////////////////// */
+
 
 @keyframes shadow-text{
   0%{
@@ -432,8 +520,36 @@ a{
     transform: translateY(-55%);
 
   }
-
 }
+
+@keyframes mobile-shadow-text{
+  0%{
+    opacity: 1;
+  }
+  15%{
+    color: $color2;
+    opacity: 1;
+    background: $color2;
+  }
+  30%{
+    font-family: $font1;
+    background: $color2;
+  }
+  45%{
+    background: $color2;
+  }
+  100%{
+    background: $color2;
+    opacity: .02;
+    color: #fff3;
+    transform: translateY(100%);
+
+  }
+}
+
+
+
+/* ///////////////// */
 
 @keyframes hello-dark{
   0%{
@@ -444,6 +560,20 @@ a{
   }
 
 }
+@keyframes mobile-hello-dark{
+  0%{
+    background: white;
+  }
+  100%{
+    background: $color1;
+  }
+
+}
+      
+/* //////////////////// */
+
+
+
 @keyframes example-title{
   0%{
     color: black;
@@ -459,6 +589,25 @@ a{
 
 }
 
+@keyframes mobile-example-title{
+  0%{
+    color: black;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100%{
+    color: white;
+    opacity: 1;
+    transform: translateY(-10%);
+
+  }
+
+}
+
+
+
+
+/* /////////////// */
 
 @keyframes example-content{
 
@@ -473,3 +622,18 @@ a{
   }
 
 }
+
+@keyframes mobile-example-content{
+
+  0%{
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0) !important;
+
+  }
+
+}
+

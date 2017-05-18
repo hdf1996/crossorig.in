@@ -63,6 +63,9 @@ a {
   text-align: center;
   margin-top: -151.8px;
   padding-bottom: 50px; }
+  @media screen and (max-width: 991px) {
+    .hey {
+      margin-top: 0; } }
 
 .main-title {
   font-size: 7em;
@@ -162,7 +165,10 @@ a {
   .main-title {
     font-size: 3em; }
     .main-title .title-i::before, .main-title .title-n::before {
-      content: none; }
+      width: 8px;
+      height: 8px;
+      top: 8px;
+      left: 4px; }
 
   .cors-it > div {
     flex-direction: column;
@@ -202,6 +208,9 @@ a {
     animation: hello-dark 0.5s ease forwards;
     flex-direction: column;
     flex-wrap: wrap; }
+    @media screen and (max-width: 991px) {
+      .how-it-works.hello {
+        animation: mobile-hello-dark 0.5s ease forwards; } }
   .how-it-works .title {
     position: relative; }
     .how-it-works .title span {
@@ -209,6 +218,10 @@ a {
       display: inline-block;
       position: relative;
       overflow: hidden; }
+      @media screen and (max-width: 991px) {
+        .how-it-works .title span {
+          font-size: 1.5em;
+          margin-bottom: 50px; } }
       .how-it-works .title span.solid-text::after {
         content: "";
         width: 100%;
@@ -217,23 +230,33 @@ a {
         margin: 5px 0;
         display: block;
         background: #ff3d00;
-        animation: line-crazy 0.5s cubic-bezier(1, 0, 0, 1) infinite; }
+        animation: line-crazy 0.5s cubic-bezier(1, 0, 0, 1);
+        animation-iteration-count: 6 !important; }
       .how-it-works .title span.shadow-text {
         position: absolute;
-        left: calc(50% - 307px);
+        left: 0;
         top: calc(50% - 61px);
         color: #ff3d00;
         z-index: -1; }
   .how-it-works.hello .title .solid-text {
     animation: how-up 1s 2s ease forwards; }
+    @media screen and (max-width: 991px) {
+      .how-it-works.hello .title .solid-text {
+        animation: mobile-how-up 1s 2s ease forwards; } }
   .how-it-works.hello .title .shadow-text {
     animation: shadow-text 3s 2s ease forwards; }
+    @media screen and (max-width: 991px) {
+      .how-it-works.hello .title .shadow-text {
+        animation: mobile-shadow-text 3s 2s ease forwards; } }
   .how-it-works.hello .example-title {
     animation: example-title 1s 3s ease forwards;
     display: inline-block;
     opacity: 0;
     color: white;
     font-size: 1.25em; }
+    @media screen and (max-width: 991px) {
+      .how-it-works.hello .example-title {
+        animation: mobile-example-title 1s 3s ease forwards; } }
   .how-it-works.hello .example-content {
     animation: example-content 1s 2s ease forwards;
     position: relative;
@@ -241,6 +264,11 @@ a {
     transform: translateY(-100%);
     max-width: 600px;
     transition: 0.3s ease; }
+    @media screen and (max-width: 991px) {
+      .how-it-works.hello .example-content {
+        animation: mobile-example-content 1s 2s ease forwards;
+        transform: translateY(0%);
+        width: 100%; } }
     .how-it-works.hello .example-content p {
       padding: 30px 35px;
       background: #F4F4F4;
@@ -261,6 +289,12 @@ a {
   position: relative;
   overflow: hidden;
   transition: 0.5s ease; }
+  @media screen and (max-width: 991px) {
+    .btn-copy {
+      width: 100%;
+      padding: 20px 10px; }
+      .btn-copy .copied-text {
+        left: 40% !important; } }
   .btn-copy:focus, .btn-copy:active {
     box-shadow: 0px 0px 0px black; }
   .btn-copy:hover {
@@ -269,7 +303,7 @@ a {
     position: absolute;
     left: 29%;
     color: white;
-    transform: translateX(-300%);
+    transform: translateX(-320%);
     transition: 0.3s ease; }
   .btn-copy.copied {
     background: #00e676;
@@ -278,11 +312,43 @@ a {
     .btn-copy.copied .copied-text {
       transform: translateX(0); }
 
+.btn-whatsapp {
+  background: #25D366;
+  color: white;
+  margin-left: 25px;
+  padding: 14px 20px;
+  display: inline-block;
+  text-decoration: none;
+  width: 110px;
+  padding-left: 40px;
+  text-align: center;
+  position: relative;
+  box-shadow: 10px 10px 0px black;
+  transition: 0.5s ease; }
+  @media screen and (max-width: 991px) {
+    .btn-whatsapp {
+      width: 100%;
+      box-sizing: border-box;
+      margin-left: 0;
+      padding: 20px 10px; }
+      .btn-whatsapp .share-icon {
+        top: 13px !important; } }
+  .btn-whatsapp:hover {
+    background: #43de7d; }
+  .btn-whatsapp .share-icon {
+    fill: white;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 10px;
+    top: 8px; }
+
 @keyframes line-crazy {
   0% {
     transform: translateX(-100%); }
   100% {
     transform: translateX(100%); } }
+/* ////////////// */
 @keyframes how-up {
   0% {
     transform: translateY(0%) scale(1); }
@@ -290,6 +356,14 @@ a {
     transform: translateY(-160%) scale(0.5);
     text-shadow: 5px 5px 0px black;
     color: white; } }
+@keyframes mobile-how-up {
+  0% {
+    transform: translateY(0%) scale(1); }
+  100% {
+    transform: translateY(20px) scale(0.7);
+    text-shadow: 5px 5px 0px black;
+    color: white; } }
+/* //////////////////// */
 @keyframes shadow-text {
   0% {
     opacity: 1; }
@@ -307,11 +381,35 @@ a {
     opacity: .02;
     color: #fff3;
     transform: translateY(-55%); } }
+@keyframes mobile-shadow-text {
+  0% {
+    opacity: 1; }
+  15% {
+    color: #ff3d00;
+    opacity: 1;
+    background: #ff3d00; }
+  30% {
+    font-family: "Bookman Old Style";
+    background: #ff3d00; }
+  45% {
+    background: #ff3d00; }
+  100% {
+    background: #ff3d00;
+    opacity: .02;
+    color: #fff3;
+    transform: translateY(100%); } }
+/* ///////////////// */
 @keyframes hello-dark {
   0% {
     background: white; }
   100% {
     background: #212121; } }
+@keyframes mobile-hello-dark {
+  0% {
+    background: white; }
+  100% {
+    background: #212121; } }
+/* //////////////////// */
 @keyframes example-title {
   0% {
     color: black;
@@ -321,6 +419,16 @@ a {
     color: white;
     opacity: 1;
     transform: translateY(-750%); } }
+@keyframes mobile-example-title {
+  0% {
+    color: black;
+    transform: translateY(100%);
+    opacity: 0; }
+  100% {
+    color: white;
+    opacity: 1;
+    transform: translateY(-10%); } }
+/* /////////////// */
 @keyframes example-content {
   0% {
     opacity: 0;
@@ -328,5 +436,12 @@ a {
   100% {
     opacity: 1;
     transform: translateY(-150%) !important; } }
+@keyframes mobile-example-content {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0) !important; } }
 
 /*# sourceMappingURL=main.css.map */
