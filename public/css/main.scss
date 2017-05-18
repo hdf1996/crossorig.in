@@ -306,8 +306,7 @@ a{
           margin: 5px 0;
           display: block;
           background: $color2;
-          animation: line-crazy 0.5s cubic-bezier(1,0,0,1);
-          animation-iteration-count: 6 !important;
+          
         }
       }
       &.shadow-text{
@@ -324,6 +323,10 @@ a{
     .title{
       .solid-text{
         animation: how-up 1s 2s ease forwards;
+        &::after{
+          animation: line-crazy 0.5s cubic-bezier(1,0,0,1);
+          animation-iteration-count: 6 !important;
+        }
         @media screen and(max-width: 991px){
           animation: mobile-how-up 1s 2s ease forwards;
         }

@@ -229,9 +229,7 @@ a {
         height: 3px;
         margin: 5px 0;
         display: block;
-        background: #ff3d00;
-        animation: line-crazy 0.5s cubic-bezier(1, 0, 0, 1);
-        animation-iteration-count: 6 !important; }
+        background: #ff3d00; }
       .how-it-works .title span.shadow-text {
         position: absolute;
         left: 0;
@@ -240,6 +238,9 @@ a {
         z-index: -1; }
   .how-it-works.hello .title .solid-text {
     animation: how-up 1s 2s ease forwards; }
+    .how-it-works.hello .title .solid-text::after {
+      animation: line-crazy 0.5s cubic-bezier(1, 0, 0, 1);
+      animation-iteration-count: 6 !important; }
     @media screen and (max-width: 991px) {
       .how-it-works.hello .title .solid-text {
         animation: mobile-how-up 1s 2s ease forwards; } }
