@@ -303,7 +303,7 @@ a {
     position: absolute;
     left: 29%;
     color: white;
-    transform: translateX(-320%);
+    transform: translateX(-500%);
     transition: 0.3s ease; }
   .btn-copy.copied {
     background: #00e676;
