@@ -64,7 +64,12 @@ a{
 }
 
 .main-section{
-  background: $color1;
+  background: #3c3a3d;
+background: -moz-linear-gradient(top,  #3c3a3d 0%, #222023 100%);
+background: -webkit-linear-gradient(top,  #3c3a3d 0%,#222023 100%);
+background: linear-gradient(to bottom,  #3c3a3d 0%,#222023 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', endColorstr='#222023',GradientType=0 );
+;
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
@@ -250,7 +255,7 @@ a{
 .how{
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  flex-wrap: wrap;
 }
 
 .btn-how-it-works{
@@ -259,7 +264,9 @@ a{
   cursor: pointer;
   text-align: center;
   color: white;
+  overflow: hidden;
   font-family: $font2;
+  
 }
 
 
@@ -277,7 +284,9 @@ a{
   min-height: 100vh;
   align-items: center;
   justify-content: center;
+  visibility: hidden;
   &.hello{
+    visibility: visible;
     transform: translateX(0%);
     animation:  hello-dark 0.5s ease forwards;
     @media screen and(max-width: 991px){
@@ -433,8 +442,10 @@ a{
   position: relative;
   box-shadow: 10px 10px 0px black;
   transition: 0.5s ease;
+  display: none;
   @media screen and(max-width: 991px){
     width: 100%;
+    display: block;
     box-sizing: border-box;
     margin-left: 0;
     padding: 20px 10px;
@@ -640,3 +651,138 @@ a{
 
 }
 
+
+@keyframes gear{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(180deg);
+  }
+
+}
+
+@keyframes git{
+  0%{
+    background: white;
+    transform: rotateX(90deg);
+  }
+  25%{
+    background: white;
+    transform: rotateX(0deg);
+  }
+  75%{
+    background: white;
+    transform: rotateX(0deg);
+  }
+  80%{
+    background: white;
+    transform: rotateX(90deg);
+  }
+  90%{
+    background: white;
+    transform: rotateX(0deg);
+  }
+  100%{
+    background: white;
+    transform: rotateX(90deg);
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+
+
+.follow-us{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  transform: translateY(50px);
+
+  .text-icon{
+    position: absolute;
+    bottom: 0%;
+    transform: translateY(100%);
+  }
+  .git-icon{
+    img{
+      width: 100px !important;
+    }
+    &::before{
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: black;
+      position: absolute;
+      right: 28px;
+      bottom: 19.5px;
+
+    }
+    &::after{
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: black;
+      position: absolute;
+      right: 5px;
+      bottom: 19.5px;
+
+    }
+
+  }
+  .how-icon{
+    img{
+      width: 70px;
+
+      position: relative;
+      top: 12px;
+      left: 14px;
+    }
+  }
+  .git-icon, .how-icon{
+    background: white;
+    border-radius: 10%;
+    box-shadow: 0px 7px 0px #ff3d00;
+    width: 72px;
+    height: 72px;
+    position: relative;
+    overflow: hidden;
+
+    img{
+      transition: 0.5s ease;
+    }
+    &:hover{
+      &.how-icon{
+        img{
+          animation: gear 1s linear infinite;
+        }
+      }
+      &.git-icon{
+          &::before, &::after{
+            animation: git 5s ease infinite;
+          }
+      }
+
+    }
+  }
+  .follow-container{
+    margin: 0 15px;
+  }
+}
