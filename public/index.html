@@ -31,18 +31,18 @@
         <div class="follow-container">
           <a href="#" class="git-icon">
             <img src="img/git-icon.svg" alt="git icon">
-            <span class="text-icon">
-              Github
-            </span>
           </a>
+          <span class="text-icon">
+            Github
+          </span>
         </div>
         <div class="follow-container">
-          <button class="how-icon">
+          <button class="how-icon btn-how-it-works">
             <img src="img/how-icon2.svg" alt="how icon">
-            <span sclass="text-icon">
-              How it works?
-            </span>
           </button>
+          <span class="text-icon">
+            How it works?
+          </span>
         </div>
       </div>
 
@@ -51,6 +51,7 @@
 
     <section class="how-it-works">
       <h1 class="title">
+        <button class="go-back"></button>
         <span class="solid-text">
           How it works
         </span>
@@ -104,6 +105,7 @@
   $(".btn-how-it-works").on('click', function(){
     $('.main-section').addClass('bye');
     $('.how-it-works').addClass('hello');
+    $('.how-it-works').removeClass('see-ya');
   })
 
   var $flag = false;
@@ -124,13 +126,13 @@
     }
   }
 
-
-  /*$( ".cors-it input[type='submit'] " ).on('submit', function(){
-    $('body').addClass("loading");
+  $('.go-back').on('click', function(){
+    $('.how-it-works').addClass('see-ya');
     setTimeout(function(){
-      $('body').removeClass("loading");
-    }, 1000)
-  })+/
+      $('.main-section').removeClass('bye');
+      $('.how-it-works').removeClass('hello');
+    }, 500)
+  })
 
 
 

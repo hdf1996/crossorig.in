@@ -264,7 +264,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', end
   cursor: pointer;
   text-align: center;
   color: white;
-  overflow: hidden;
   font-family: $font2;
   
 }
@@ -328,7 +327,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', end
     }
 
   }
+  &.see-ya{
+    opacity: 0;
+  }
   &.hello{
+    .go-back{
+      opacity: 1;
+      transform: translateX(0);
+    }
     .title{
       .solid-text{
         animation: how-up 1s 2s ease forwards;
@@ -714,8 +720,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', end
 
   .text-icon{
     position: absolute;
-    bottom: 0%;
     transform: translateY(100%);
+    transition: 0.3s ease;
+    color: white;
+    opacity: 0;
+    left: 0px;
+    bottom: -30px;
+    display: block;
+    text-align: center;
+    width: 100%;
+
   }
   .git-icon{
     img{
@@ -764,7 +778,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', end
     height: 72px;
     position: relative;
     overflow: hidden;
-
     img{
       transition: 0.5s ease;
     }
@@ -776,13 +789,65 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', end
       }
       &.git-icon{
           &::before, &::after{
-            animation: git 5s ease infinite;
+            animation: git 2s ease infinite;
           }
       }
+      + .text-icon{
+        opacity: 1;
+      }
 
+    }
+    &:active, &:focus{
+      + .text-icon{
+        color: $color2;
+      }
     }
   }
   .follow-container{
     margin: 0 15px;
+  }
+}
+
+
+.go-back{
+  position: absolute;
+  top: -160px;
+  left: 5px;
+  background: none;
+  border: none;
+  width: 70px;
+  height: 50px;
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: 0.3s 4s ease;
+  cursor: pointer;
+
+  &::before, &::after{
+    content: "<";
+    color: white;
+    font-size: 2em;
+    font-family: $font2;
+
+  }
+  &::before{
+    transition: 0.3s ease;
+  }
+  &::after{
+    transition: 0.3s 0.3s ease;
+  }
+  &:hover{
+    &::before, &::after{
+      transform: translateX(-15px);
+    }
+  }
+  @media screen and (max-width: 991px){
+    top: -22px;
+    left: -7px;
+    width: 50px;
+    height: 50px;
   }
 }

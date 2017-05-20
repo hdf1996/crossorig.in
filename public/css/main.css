@@ -191,7 +191,6 @@ a {
   cursor: pointer;
   text-align: center;
   color: white;
-  overflow: hidden;
   font-family: "Gotham Rounded"; }
 
 .how-it-works {
@@ -243,6 +242,11 @@ a {
         top: calc(50% - 61px);
         color: #ff3d00;
         z-index: -1; }
+  .how-it-works.see-ya {
+    opacity: 0; }
+  .how-it-works.hello .go-back {
+    opacity: 1;
+    transform: translateX(0); }
   .how-it-works.hello .title .solid-text {
     animation: how-up 1s 2s ease forwards; }
     .how-it-works.hello .title .solid-text::after {
@@ -486,8 +490,15 @@ a {
   transform: translateY(50px); }
   .follow-us .text-icon {
     position: absolute;
-    bottom: 0%;
-    transform: translateY(100%); }
+    transform: translateY(100%);
+    transition: 0.3s ease;
+    color: white;
+    opacity: 0;
+    left: 0px;
+    bottom: -30px;
+    display: block;
+    text-align: center;
+    width: 100%; }
   .follow-us .git-icon img {
     width: 100px !important; }
   .follow-us .git-icon::before {
@@ -528,8 +539,46 @@ a {
     .follow-us .git-icon:hover.how-icon img, .follow-us .how-icon:hover.how-icon img {
       animation: gear 1s linear infinite; }
     .follow-us .git-icon:hover.git-icon::before, .follow-us .git-icon:hover.git-icon::after, .follow-us .how-icon:hover.git-icon::before, .follow-us .how-icon:hover.git-icon::after {
-      animation: git 5s ease infinite; }
+      animation: git 2s ease infinite; }
+    .follow-us .git-icon:hover + .text-icon, .follow-us .how-icon:hover + .text-icon {
+      opacity: 1; }
+    .follow-us .git-icon:active + .text-icon, .follow-us .git-icon:focus + .text-icon, .follow-us .how-icon:active + .text-icon, .follow-us .how-icon:focus + .text-icon {
+      color: #ff3d00; }
   .follow-us .follow-container {
     margin: 0 15px; }
+
+.go-back {
+  position: absolute;
+  top: -160px;
+  left: 5px;
+  background: none;
+  border: none;
+  width: 70px;
+  height: 50px;
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: 0.3s 4s ease;
+  cursor: pointer; }
+  .go-back::before, .go-back::after {
+    content: "<";
+    color: white;
+    font-size: 2em;
+    font-family: "Gotham Rounded"; }
+  .go-back::before {
+    transition: 0.3s ease; }
+  .go-back::after {
+    transition: 0.3s 0.3s ease; }
+  .go-back:hover::before, .go-back:hover::after {
+    transform: translateX(-15px); }
+  @media screen and (max-width: 991px) {
+    .go-back {
+      top: -22px;
+      left: -7px;
+      width: 50px;
+      height: 50px; } }
 
 /*# sourceMappingURL=main.css.map */
