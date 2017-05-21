@@ -94,7 +94,7 @@ app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
   res.header('Doge', 'SUCH CORS');
   let headers = Object.assign(removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS), {});
   console.log(req.rawBody)
-  request.put(url,
+  request.delete(url,
   {
     json: true,
     body: req.rawBody,
