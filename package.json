@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hdf1986/crossorig.in#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.2"
   }
 }
