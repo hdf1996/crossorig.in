@@ -68,6 +68,23 @@ app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
   }).on('response', (r) => { console.log("Finished POST (" + r.statusCode + ") " + url)}).pipe(res);
 });
 
+app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
+  var url = req.url.substr(1);
+  console.log("Request url POST: " + url)
+  console.log(req.url)
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Request-Method', 'GET, PATCH, PUT, POST, OPTIONS, DELETE');
+  res.header('Doge', 'SUCH CORS');
+  let headers = Object.assign(removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS), {});
+  console.log(req.rawBody)
+  request.put(url,
+  {
+    json: true,
+    body: req.rawBody,
+    headers: headers
+  }).on('response', (r) => { console.log("Finished POST (" + r.statusCode + ") " + url)}).pipe(res);
+});
+
 app.listen(3000, function () {
   console.log('CORS Running on port 3000!');
 });
