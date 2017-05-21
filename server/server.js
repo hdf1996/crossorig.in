@@ -70,7 +70,7 @@ app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
 
 app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
   var url = req.url.substr(1);
-  console.log("Request url POST: " + url)
+  console.log("Request url PUT: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Request-Method', 'GET, PATCH, PUT, POST, OPTIONS, DELETE');
@@ -82,12 +82,12 @@ app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
     json: true,
     body: req.rawBody,
     headers: headers
-  }).on('response', (r) => { console.log("Finished POST (" + r.statusCode + ") " + url)}).pipe(res);
+  }).on('response', (r) => { console.log("Finished PUT (" + r.statusCode + ") " + url)}).pipe(res);
 });
 
 app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
   var url = req.url.substr(1);
-  console.log("Request url POST: " + url)
+  console.log("Request url DELETE: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Request-Method', 'GET, PATCH, PUT, POST, OPTIONS, DELETE');
@@ -99,7 +99,7 @@ app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
     json: true,
     body: req.rawBody,
     headers: headers
-  }).on('response', (r) => { console.log("Finished POST (" + r.statusCode + ") " + url)}).pipe(res);
+  }).on('response', (r) => { console.log("Finished DELETE (" + r.statusCode + ") " + url)}).pipe(res);
 });
 
 app.listen(3000, function () {
