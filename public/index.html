@@ -22,7 +22,7 @@
 
         <form class="cors-it" doge-attribute="what">
           <div>
-            <input id="corsit-content" type="text" name="corsit" placeholder="Of CORS! No problem."><input type="submit" id="main-obj" value="Send">
+            <input id="corsit-content" required type="text" name="corsit" placeholder="Of CORS! No problem."><input type="submit" id="main-obj" value="Send">
             <div class="text-it"></div>
           </div>
         </form>
@@ -88,12 +88,20 @@
     </section>
 
 
+
+
   </main>
 
 
 
 
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript">
+  window.onload = function() {
+    var input = document.getElementById("corsit-content").focus();
+  }
+</script>
 
 <script type="text/javascript">
   
