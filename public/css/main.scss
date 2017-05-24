@@ -60,16 +60,51 @@ a{
   margin: 0;
   overflow: hidden;
   position: relative;
+  height: 100vh;
 
 }
 
 .main-section{
-  background: #3c3a3d;
-background: -moz-linear-gradient(top,  #3c3a3d 0%, #222023 100%);
-background: -webkit-linear-gradient(top,  #3c3a3d 0%,#222023 100%);
-background: linear-gradient(to bottom,  #3c3a3d 0%,#222023 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', endColorstr='#222023',GradientType=0 );
-;
+  background: $color1;
+  background: -moz-linear-gradient(top,  #3c3a3d 0%, #222023 100%);
+  background: -webkit-linear-gradient(top,  #3c3a3d 0%,#222023 100%);
+  background: linear-gradient(to bottom,  #3c3a3d 0%,#222023 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', endColorstr='#222023',GradientType=0 );
+  ;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s 0.5s ease;
+  .back-color{
+    background: $color2;
+    min-height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
+    transition: 0.5s ease;
+  }
+  &.bye{
+    transform: translateX(-100%);
+    .back-color{
+      transform: translateX(0);
+    }
+  }
+}
+
+
+
+
+.main-section-container{
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
@@ -362,6 +397,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', end
       opacity: 0;
       color: white;
       font-size: 1.25em;
+      &.off{
+        display: none;
+      }
     }
     .example-content{
       animation: example-content 1s 2s ease forwards;
@@ -717,7 +755,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', end
   flex-wrap: wrap;
   margin-top: 25px;
   transform: translateY(50px);
-
+  transition: 0.5s ease;
+  &.on{
+    opacity: 0;
+  }
   .text-icon{
     position: absolute;
     transform: translateY(100%);
@@ -833,7 +874,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3d', end
     font-family: $font2;
 
   }
-  &::before{
+    &::before{
     transition: 0.3s ease;
   }
   &::after{

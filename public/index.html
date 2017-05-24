@@ -10,43 +10,45 @@
 
   <main class="main-content">
     <section class="main-section">
-      <article class="hey">
-        <h1 class="main-title">
-          Crossorig<span class="title-n">n</span>
-        </h1>
-        <h2 class="slogan">
-          The ultimate cors fixing site
-        </h2>
-      </article>
+      <section class="main-section-container">
+        <article class="hey">
+          <h1 class="main-title">
+            Crossorig<span class="title-n">n</span>
+          </h1>
+          <h2 class="slogan">
+            The ultimate cors fixing site
+          </h2>
+        </article>
 
-      <form class="cors-it" doge-attribute="what">
-        <div>
-          <input type="text" name="corsit" placeholder="Of CORS! No problem."><input type="submit" id="main-obj" value="Send">
-          <div class="text-it"></div>
-        </div>
-      </form>
-      
+        <form class="cors-it" doge-attribute="what">
+          <div>
+            <input id="corsit-content" type="text" name="corsit" placeholder="Of CORS! No problem."><input type="submit" id="main-obj" value="Send">
+            <div class="text-it"></div>
+          </div>
+        </form>
+        
 
-      <div class="follow-us">
-        <div class="follow-container">
-          <a href="https://github.com/hdf1986/crossorig.in" class="git-icon">
-            <img src="img/git-icon.svg" alt="git icon">
-          </a>
-          <span class="text-icon">
-            Github
-          </span>
+        <div class="follow-us">
+          <div class="follow-container">
+            <a href="https://github.com/hdf1986/crossorig.in" class="git-icon">
+              <img src="img/git-icon.svg" alt="git icon">
+            </a>
+            <span class="text-icon">
+              Github
+            </span>
+          </div>
+          <div class="follow-container">
+            <button class="how-icon btn-how-it-works">
+              <img src="img/how-icon2.svg" alt="how icon">
+            </button>
+            <span class="text-icon">
+              How it works?
+            </span>
+          </div>
         </div>
-        <div class="follow-container">
-          <button class="how-icon btn-how-it-works">
-            <img src="img/how-icon2.svg" alt="how icon">
-          </button>
-          <span class="text-icon">
-            How it works?
-          </span>
-        </div>
-      </div>
 
-      <div class="back-color"></div>
+        <div class="back-color"></div>
+      </section>
     </section>
 
     <section class="how-it-works">
@@ -65,7 +67,7 @@
             Example:
         </h1>
         <article class="example-content">
-          <p id="example-text"">$.ajax({<span class="highlight">url:</span> 'https://crossorig.in/http://your-domain',<span class="highlight">method:</span> 'GET',<span class="highlight">success:</span> function (data) {console.log('Look mom! I've fixed CORS');console.log(data);}});
+          <p id="example-text"">$.ajax({<span class="highlight">url:</span> 'https://crossorig.in/<span id="your-domain">your-domain</span>',<span class="highlight">method:</span> 'GET',<span class="highlight">success:</span> function (data) {console.log('Look mom! I've fixed CORS');console.log(data);}});
           </p>
           <button class="btn-copy" onclick="copyToClipboard('#example-text')">
             <span>
@@ -78,9 +80,7 @@
           <a class="btn-whatsapp" href="whatsapp://send?text=$.ajax({url: 'https://crossorig.in/http://your-domain',method: 'GET',success: function (data) {console.log('Look mom! I've fixed CORS');console.log(data);}});">
           <?xml version="1.0" ?><svg class="share-icon" style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="info"/><g id="icons"><path d="M21.7,10.2l-6.6-6C14.6,3.7,14,4.2,14,5v3c-4.7,0-8.7,2.9-10.6,6.8c-0.7,1.3-1.1,2.7-1.4,4.1   c-0.2,1,1.3,1.5,1.9,0.6C6.1,16,9.8,13.7,14,13.7V17c0,0.8,0.6,1.3,1.1,0.8l6.6-6C22.1,11.4,22.1,10.6,21.7,10.2z" id="share"/></g></svg>
             WhatsApp</a>
-          <!-- <a href="whatsapp://send?text=Hello%20World!">
-            Whatsapp!
-          </a> -->
+       
         </article>
       </article>
 
@@ -92,20 +92,31 @@
 
 
 
-<script type="text/javascript">
-  
-  window.onload = function() {
-    var input = document.getElementById("main-obj").focus();
-  }
-</script>
 
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 
+<script type="text/javascript">
+  
+  $('.cors-it').submit(function() {
+
+    $("#your-domain").text($("#corsit-content").val());
+
+    $('.main-section').addClass('bye');
+    $('.how-it-works').addClass('hello');
+    $('.how-it-works').removeClass('see-ya');
+    
+    $('.solid-text, .shadow-text').text('Loading');
+    $('.example-title').addClass('off');
+    return false;
+
+  });
+</script>
 <script type="text/javascript">
   $(".btn-how-it-works").on('click', function(){
     $('.main-section').addClass('bye');
     $('.how-it-works').addClass('hello');
     $('.how-it-works').removeClass('see-ya');
+    $('.solid-text, .shadow-text').text('How it works');
   })
 
   var $flag = false;
