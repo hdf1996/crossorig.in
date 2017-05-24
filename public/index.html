@@ -107,7 +107,9 @@
   
   $('.cors-it').submit(function() {
 
+    var domain = "whatsapp://send?text=$.ajax({url:'https://crossorig.in/"+$("#corsit-content").val()+"',method: 'GET',success: function (data) {console.log('Look mom! I've fixed CORS');console.log(data);}});";
     $("#your-domain").text($("#corsit-content").val());
+    $(".btn-whatsapp").attr('href', domain);
 
     $('.main-section').addClass('bye');
     $('.how-it-works').addClass('hello');
