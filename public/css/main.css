@@ -543,7 +543,8 @@ a {
     background: black;
     position: absolute;
     right: 28px;
-    bottom: 19.5px; }
+    bottom: 19.5px;
+    transition: 0.5s ease; }
   .follow-us .git-icon::after {
     content: "";
     display: inline-block;
@@ -553,7 +554,8 @@ a {
     background: black;
     position: absolute;
     right: 5px;
-    bottom: 19.5px; }
+    bottom: 19.5px;
+    transition: 0.5s ease; }
   .follow-us .how-icon img {
     width: 70px;
     position: relative;
