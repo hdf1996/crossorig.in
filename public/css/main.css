@@ -63,6 +63,8 @@ a {
     transform: translateX(-100%); }
     .main-section.bye .back-color {
       transform: translateX(0); }
+      .main-section.bye .back-color .tiburoncin {
+        opacity: 0.2; }
 
 .main-section-container {
   z-index: 2;
@@ -615,5 +617,11 @@ a {
       left: -7px;
       width: 50px;
       height: 50px; } }
+
+.tiburoncin {
+  width: 100%;
+  opacity: 0.1;
+  position: absolute;
+  transition: 1s ease; }
 
 /*# sourceMappingURL=main.css.map */
