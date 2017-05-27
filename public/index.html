@@ -69,7 +69,7 @@
         <article class="example-content">
           <p contenteditable id="example-text"">$.ajax({<span class="highlight"><br>url:</span> 'https://crossorig.in/<span id="your-domain">your-domain</span>',<span class="highlight"><br>method:</span> 'GET',<span class="highlight">success:</span> function (data) {<br>console.log('Look mom! I've fixed CORS');console.log(data);<br>}<br>});
           </p>
-          <button class="btn-copy" onclick="copyToClipboard('#example-text')">
+          <button class="btn-copy" onclick="CopyToClipboard('example-text')">
             <span>
               Copy
             </span>
@@ -119,6 +119,25 @@
 
   });
 </script>
+
+<script type="text/javascript">
+  function CopyToClipboard(containerid) {
+  if (document.selection) { 
+      var range = document.body.createTextRange();
+      range.moveToElementText(document.getElementById(containerid));
+      range.select().createTextRange();
+      document.execCommand("Copy");
+      copybtn(); 
+
+  } else if (window.getSelection) {
+      var range = document.createRange();
+       range.selectNode(document.getElementById(containerid));
+       window.getSelection().addRange(range);
+       document.execCommand("Copy");
+       copybtn();
+  }}  
+</script>
+
 <script type="text/javascript">
   $(".btn-how-it-works").on('click', function(){
     $('.main-section').addClass('bye');
@@ -127,14 +146,9 @@
     $('.solid-text, .shadow-text').text('How it works');
   })
 
-  var $flag = false;
 
-    function copyToClipboard(element) {
-    var $temp = $("<input>");
-    $("body").append($temp);
-    $temp.val($(element).text()).select();
-    document.execCommand("copy");
-    $temp.remove();
+  var $flag = false;
+  function copybtn() {
     $flag = true;
 
     if($flag){
