@@ -102,6 +102,7 @@ app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
   }).on('response', (r) => { console.log("Finished DELETE (" + r.statusCode + ") " + url)}).pipe(res);
 });
 
-app.listen((process.env.PORT || 5000), function () {
+app.set('port', (process.env.PORT || 5000))
+app.listen(app.get('port'), function () {
   console.log('CORS Running on port 5000!');
 });
