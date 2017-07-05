@@ -103,6 +103,9 @@ app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
 });
 
 app.set('port', (process.env.PORT || 5000))
+
+app.use(express.static('public'));
+
 app.listen(app.get('port'), function () {
   console.log('CORS Running on port 5000!');
 });
