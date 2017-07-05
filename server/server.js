@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
   req.rawBody = '';
   req.setEncoding('utf8');
 
-  req.on('data', function(chunk) { 
+  req.on('data', function(chunk) {
     req.rawBody += chunk;
   });
 
@@ -102,6 +102,6 @@ app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
   }).on('response', (r) => { console.log("Finished DELETE (" + r.statusCode + ") " + url)}).pipe(res);
 });
 
-app.listen(3000, function () {
-  console.log('CORS Running on port 3000!');
+app.listen((process.env.PORT || 5000), function () {
+  console.log('CORS Running on port 5000!');
 });
