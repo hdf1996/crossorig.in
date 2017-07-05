@@ -3,3 +3,4 @@
 !/log/.keep
 /css/main.css
 /.sass-cache/**/*
+node_modules
