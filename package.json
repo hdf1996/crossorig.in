@@ -18,7 +18,8 @@
   "homepage": "https://github.com/hdf1986/crossorig.in#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "request": "^2.81.0"
   },
   "engines": {
     "node": "8.1.2"
