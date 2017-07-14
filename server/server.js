@@ -18,6 +18,9 @@ let removeKeys = (object, keysToRemove) => {
   return p;
 }
 
+let obtainUrl = (url) => {
+  return url.substr(1)
+}
 
 app.use(bodyParser.raw({
   inflate: true
@@ -37,7 +40,7 @@ app.use(function(req, res, next) {
 });
 
 app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = req.url.substr(1);
+  var url = obtainUrl(req.url);
   console.log("Request url GET: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
@@ -62,7 +65,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
 });
 
 app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = req.url.substr(1);
+  var url = obtainUrl(req.url);
   console.log("Request url POST: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
@@ -89,7 +92,7 @@ app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
 });
 
 app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = req.url.substr(1);
+  var url = obtainUrl(req.url);
   console.log("Request url PUT: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
@@ -116,7 +119,7 @@ app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
 });
 
 app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = req.url.substr(1);
+  var url = obtainUrl(req.url);
   console.log("Request url DELETE: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
