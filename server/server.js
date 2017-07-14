@@ -52,6 +52,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
     delete r.headers['set-cookie'];
     delete r.headers['connection'];
     delete r.headers['cf-ray'];
+    delete r.headers['cf-visitor'];
     delete r.headers['host'];
     delete r.headers['x-forwarded-for'];
     console.log(r.headers)
