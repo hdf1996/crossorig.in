@@ -47,7 +47,10 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
   request(url,
   {
     headers: headers
-  }).on('response', (r) => { console.log("Finished GET (" + r.statusCode + ") " + url)}).pipe(res);
+  }).on('response', (r) => {
+    r.headers['Server'] = 'PENZOIL DRINKERS HOGO V1';
+    console.log("Finished GET (" + r.statusCode + ") " + url)
+  }).pipe(res);
 });
 
 app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
