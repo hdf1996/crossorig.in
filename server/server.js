@@ -48,7 +48,8 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
   {
     headers: headers
   }).on('response', (r) => {
-    r.headers['Server'] = 'PENZOIL DRINKERS HOGO V1';
+    r.headers['Server'] = 'JAY PENZOIL DRINKERS HOGO V1';
+    delete r.headers['Set-Cookie'];
     console.log("Finished GET (" + r.statusCode + ") " + url)
   }).pipe(res);
 });
