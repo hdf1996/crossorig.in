@@ -14,6 +14,7 @@ let removeKeys = (object, keysToRemove) => {
       }
     }
   );
+  p['Server'] = 'Larousse';
   return p;
 }
 
