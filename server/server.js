@@ -21,7 +21,7 @@ let removeKeys = (object, keysToRemove) => {
 let obtainUrl = (req) => {
   let url = req.url.substr(1)
   console.log(req.headers)
-  if(typeof(req.headers['referer']) == 'undefined' || req.headers['referer'] == '') {
+  if(typeof(req.headers['referer']) == 'undefined' || req.headers['referer'] == '' || true) {
     return url
   } else {
     console.log("Having referer")
