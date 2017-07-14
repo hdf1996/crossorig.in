@@ -51,7 +51,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
     r.headers['Server'] = 'JAY PENZOIL DRINKERS HOGO V1';
     delete ['set-cookie'];
     delete r.headers['cf-ray'];
-    delete r.headers['CF-RAY'];
+    console.log(`headers ${r.headers}`)
     console.log("Finished GET (" + r.statusCode + ") " + url)
   }).pipe(res);
 });
