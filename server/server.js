@@ -3,7 +3,8 @@ var request = require('request');
 var bodyParser = require('body-parser')
 var app = express();
 
-const FORBIDDEN_CLIENT_HEADERS = [ 'host' ]
+const FORBIDDEN_CLIENT_HEADERS = [ 'host', 'cf-connecting-ip', 'cf-ipcountry', 'cf-ray',
+                                   'cf-visitor']
 
 let removeKeys = (object, keysToRemove) => {
   var p = {};
