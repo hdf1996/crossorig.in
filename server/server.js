@@ -57,7 +57,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
     delete r.headers['host'];
     delete r.headers['x-forwarded-for'];
     console.log("Finished GET (" + r.statusCode + ") " + url)
-  }).pipe(res);
+  }).on('error', function(){ console.log('Ehm... something went wrong') }).pipe(res);
 });
 
 app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
@@ -83,7 +83,7 @@ app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
     delete r.headers['host'];
     delete r.headers['x-forwarded-for'];
     console.log("Finished POST (" + r.statusCode + ") " + url)
-  }).pipe(res);
+  }).on('error', function(){ console.log('Ehm... something went wrong') }).pipe(res);
 });
 
 app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
@@ -109,7 +109,7 @@ app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
     delete r.headers['host'];
     delete r.headers['x-forwarded-for'];
     console.log("Finished PUT (" + r.statusCode + ") " + url)
-  }).pipe(res);
+  }).on('error', function(){ console.log('Ehm... something went wrong') }).pipe(res);
 });
 
 app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
@@ -135,7 +135,7 @@ app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
     delete r.headers['host'];
     delete r.headers['x-forwarded-for'];
     console.log("Finished DELETE (" + r.statusCode + ") " + url)
-  }).pipe(res);
+  }).on('error', function(){ console.log('Ehm... something went wrong') }).pipe(res);
 });
 
 app.set('port', (process.env.PORT || 5000))
