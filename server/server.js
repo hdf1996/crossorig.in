@@ -50,7 +50,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
   }).on('response', (r) => {
     r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1';
     delete r.headers['set-cookie'];
-    delete r.hedaers['connection'];
+    delete r.headers['connection'];
     delete r.headers['cf-ray'];
     console.log(r.headers)
     console.log("Finished GET (" + r.statusCode + ") " + url)
