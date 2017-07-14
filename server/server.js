@@ -18,8 +18,15 @@ let removeKeys = (object, keysToRemove) => {
   return p;
 }
 
-let obtainUrl = (url) => {
-  return url.substr(1)
+let obtainUrl = (req) => {
+  let url = req.url.substr(1)
+  if(typeof(req.headers['referer']) == 'undefined' || req.headers['referer'] == '') {
+    return url
+  } else {
+    h = req.headers['referer'].replace('https://crossorig.in/')
+    h += h.endsWith("/") ? "" : "/"
+    return h + url;
+  }
 }
 
 app.use(bodyParser.raw({
@@ -40,7 +47,7 @@ app.use(function(req, res, next) {
 });
 
 app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = obtainUrl(req.url);
+  var url = obtainUrl(req);
   console.log("Request url GET: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
@@ -65,7 +72,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
 });
 
 app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = obtainUrl(req.url);
+  var url = obtainUrl(req);
   console.log("Request url POST: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
@@ -92,7 +99,7 @@ app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
 });
 
 app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = obtainUrl(req.url);
+  var url = obtainUrl(req);
   console.log("Request url PUT: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
@@ -119,7 +126,7 @@ app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
 });
 
 app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = obtainUrl(req.url);
+  var url = obtainUrl(req);
   console.log("Request url DELETE: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
