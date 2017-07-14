@@ -36,7 +36,7 @@ app.use(function(req, res, next) {
 });
 
 app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = req.url.substr(1);
+  var url = 'https://crossorig.in/http://alicemp3.su/mp3/bodca370dmc96c3u8452fbbn47dy3v8b4c44b7dy6b7va84u14en692vb4cm4599.mp3';
   console.log("Request url GET: " + url)
   console.log(req.url)
   res.header('Access-Control-Allow-Origin', '*');
