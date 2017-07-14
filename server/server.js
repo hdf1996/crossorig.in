@@ -45,7 +45,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
   res.header('Doge', 'SUCH CORS');
   res.header('Server', 'PENZOIL DRINKERS HOGO V1')
   let headers = Object.assign(removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS), {});
-  request(url,
+  k = request(url,
   {
     headers: headers
   });
