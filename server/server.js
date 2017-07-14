@@ -52,6 +52,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
     delete r.headers['set-cookie'];
     delete r.headers['connection'];
     delete r.headers['cf-ray'];
+    delete r.headers['host'];
     console.log(r.headers)
     console.log("Finished GET (" + r.statusCode + ") " + url)
   }).pipe(res);
