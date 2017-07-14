@@ -53,6 +53,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
     delete r.headers['connection'];
     delete r.headers['cf-ray'];
     delete r.headers['host'];
+    delete r.headers['x-forwarded-for'];
     console.log(r.headers)
     console.log("Finished GET (" + r.statusCode + ") " + url)
   }).pipe(res);
