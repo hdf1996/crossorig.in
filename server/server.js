@@ -49,7 +49,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
     headers: headers
   }).on('response', (r) => {
     r.headers['Server'] = 'JAY PENZOIL DRINKERS HOGO V1';
-    r.headers['Set-Cookie'] = 'DOGE 1; expires=Sat, 14-Jul-18 01:38:37 GMT; path=/; domain=.crossorig.in; HttpOnly';
+    delete ['set-cookie'];
     delete r.headers['cf-ray'];
     console.log("Finished GET (" + r.statusCode + ") " + url)
   }).pipe(res);
