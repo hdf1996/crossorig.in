@@ -74,7 +74,16 @@ app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
     json: true,
     body: req.rawBody,
     headers: headers
-  }).on('response', (r) => { console.log("Finished POST (" + r.statusCode + ") " + url)}).pipe(res);
+  }).on('response', (r) => {
+    r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1';
+    delete r.headers['set-cookie'];
+    delete r.headers['connection'];
+    delete r.headers['cf-ray'];
+    delete r.headers['cf-visitor'];
+    delete r.headers['host'];
+    delete r.headers['x-forwarded-for'];
+    console.log("Finished POST (" + r.statusCode + ") " + url)
+  }).pipe(res);
 });
 
 app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
@@ -91,7 +100,16 @@ app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
     json: true,
     body: req.rawBody,
     headers: headers
-  }).on('response', (r) => { console.log("Finished PUT (" + r.statusCode + ") " + url)}).pipe(res);
+  }).on('response', (r) => {
+    r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1';
+    delete r.headers['set-cookie'];
+    delete r.headers['connection'];
+    delete r.headers['cf-ray'];
+    delete r.headers['cf-visitor'];
+    delete r.headers['host'];
+    delete r.headers['x-forwarded-for'];
+    console.log("Finished PUT (" + r.statusCode + ") " + url)
+  }).pipe(res);
 });
 
 app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
@@ -108,7 +126,16 @@ app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
     json: true,
     body: req.rawBody,
     headers: headers
-  }).on('response', (r) => { console.log("Finished DELETE (" + r.statusCode + ") " + url)}).pipe(res);
+  }).on('response', (r) => {
+    r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1';
+    delete r.headers['set-cookie'];
+    delete r.headers['connection'];
+    delete r.headers['cf-ray'];
+    delete r.headers['cf-visitor'];
+    delete r.headers['host'];
+    delete r.headers['x-forwarded-for'];
+    console.log("Finished DELETE (" + r.statusCode + ") " + url)
+  }).pipe(res);
 });
 
 app.set('port', (process.env.PORT || 5000))
