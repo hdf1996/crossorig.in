@@ -14,7 +14,6 @@ let removeKeys = (object, keysToRemove) => {
       }
     }
   );
-  p['Server'] = 'Larousse';
   return p;
 }
 
@@ -43,6 +42,7 @@ app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Request-Method', 'GET, PATCH, PUT, POST, OPTIONS, DELETE');
   res.header('Doge', 'SUCH CORS');
+  res.header('Server', 'Larousse')
   let headers = Object.assign(removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS), {});
   request(url,
   {
