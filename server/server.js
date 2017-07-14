@@ -24,6 +24,7 @@ let obtainUrl = (req) => {
   if(typeof(req.headers['referer']) == 'undefined' || req.headers['referer'] == '') {
     return url
   } else {
+    console.log("Having referer")
     h = req.headers['referer'].replace('https://crossorig.in/http://', '').replace('https://crossorig.in/https://', '').replace('https://crossorig.in/', '')
     h += h.endsWith("/") ? "" : "/"
     return h + url;
