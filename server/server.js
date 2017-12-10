@@ -1,162 +1,206 @@
-var express = require('express');
-var request = require('request');
-var bodyParser = require('body-parser')
-var app = express();
+const express = require('express')
+const request = require('request')
+const bodyParser = require('body-parser')
+const app = express()
 
-const FORBIDDEN_CLIENT_HEADERS = [ 'host', 'cf-connecting-ip', 'cf-ipcountry', 'cf-ray',
-                                   'cf-visitor']
+const { removeKeys, obtainUrl } = require('./helpers.js')
+const { REGEX_HTTP, FORBIDDEN_CLIENT_HEADERS } = require('./constants.js')
 
-let removeKeys = (object, keysToRemove) => {
-  var p = {};
-  Object.entries(object).forEach(
-    ([key, value]) => {
-      if(keysToRemove.indexOf(key) == -1){
-        p[key] = value;
-      }
-    }
-  );
-  return p;
-}
+app.use(
+  bodyParser.raw({
+    inflate: true,
+  })
+)
 
-let obtainUrl = (req) => {
-  let url = req.url.substr(1)
-  if(typeof(req.headers['referer']) == 'undefined' || req.headers['referer'] == '' || true) {
-    return url
-  } else {
-    console.log("Having referer")
-    h = req.headers['referer'].replace('https://crossorig.in/http://', '').replace('https://crossorig.in/https://', '').replace('https://crossorig.in/', '')
-    h += h.endsWith("/") ? "" : "/"
-    return h + url;
-  }
-}
+app.use((req, res, next) => {
+  req.rawBody = ''
+  req.setEncoding('utf8')
 
-app.use(bodyParser.raw({
-  inflate: true
-}));
+  req.on('data', chunk => {
+    req.rawBody += chunk
+  })
 
-app.use(function(req, res, next) {
-  req.rawBody = '';
-  req.setEncoding('utf8');
+  req.on('end', () => {
+    next()
+  })
+})
 
-  req.on('data', function(chunk) {
-    req.rawBody += chunk;
-  });
+app.get(REGEX_HTTP, (req, res) => {
+  const url = obtainUrl(req)
 
-  req.on('end', function() {
-    next();
-  });
-});
-
-app.get(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = obtainUrl(req);
-  console.log("Request url GET: " + url)
-  console.log(req.url)
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Request-Method', 'GET, PATCH, PUT, POST, OPTIONS, DELETE');
-  res.header('Doge', 'SUCH CORS');
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header(
+    'Access-Control-Request-Method',
+    'GET, PATCH, PUT, POST, OPTIONS, DELETE'
+  )
+  res.header('Doge', 'SUCH CORS')
   res.header('Server', 'PENZOIL DRINKERS HOGO V1')
-  let headers = Object.assign(removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS), {});
-  k = request(url,
-  {
-    headers: headers
-  });
-  k.on('response', (r) => {
-    r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1';
-    delete r.headers['set-cookie'];
-    delete r.headers['connection'];
-    delete r.headers['cf-ray'];
-    delete r.headers['cf-visitor'];
-    delete r.headers['host'];
-    delete r.headers['x-forwarded-for'];
-    console.log("Finished GET (" + r.statusCode + ") " + url)
-  }).on('error', function(e){ console.log('Ehm... something went wrong');console.log(e); res.end()}).pipe(res);
-});
 
-app.post(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = obtainUrl(req);
-  console.log("Request url POST: " + url)
+  const headers = Object.assign(
+    removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS),
+    {}
+  )
+
+  const k = request(url, { headers })
+
+  k
+    .on('response', r => {
+      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1'
+      delete r.headers['set-cookie']
+      delete r.headers['connection']
+      delete r.headers['cf-ray']
+      delete r.headers['cf-visitor']
+      delete r.headers['host']
+      delete r.headers['x-forwarded-for']
+      console.log(`Finished GET (${r.statusCode}) ${url}`)
+    })
+    .on('error', e => {
+      console.log('Ehm... something went wrong')
+      console.log(e)
+      res.end()
+    })
+    .pipe(res)
+})
+
+app.post(REGEX_HTTP, (req, res) => {
+  const url = obtainUrl(req)
+
+  console.log(`Request url POST: ${url}`)
   console.log(req.url)
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Request-Method', 'GET, PATCH, PUT, POST, OPTIONS, DELETE');
-  res.header('Doge', 'SUCH CORS');
-  let headers = Object.assign(removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS), {});
+
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header(
+    'Access-Control-Request-Method',
+    'GET, PATCH, PUT, POST, OPTIONS, DELETE'
+  )
+
+  res.header('Doge', 'SUCH CORS')
+
+  const headers = Object.assign(
+    removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS),
+    {}
+  )
   console.log(req.rawBody)
-  var k = request.post(url,
-  {
+
+  const k = request.post(url, {
     json: true,
     body: req.rawBody,
-    headers: headers
-  });
-  k.on('response', (r) => {
-    r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1';
-    delete r.headers['set-cookie'];
-    delete r.headers['connection'];
-    delete r.headers['cf-ray'];
-    delete r.headers['cf-visitor'];
-    delete r.headers['host'];
-    delete r.headers['x-forwarded-for'];
-    console.log("Finished POST (" + r.statusCode + ") " + url)
-  }).on('error', function(e){ console.log('Ehm... something went wrong');console.log(e); res.end()}).pipe(res);
-});
+    headers: headers,
+  })
 
-app.put(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = obtainUrl(req);
-  console.log("Request url PUT: " + url)
+  k
+    .on('response', r => {
+      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1'
+      delete r.headers['set-cookie']
+      delete r.headers['connection']
+      delete r.headers['cf-ray']
+      delete r.headers['cf-visitor']
+      delete r.headers['host']
+      delete r.headers['x-forwarded-for']
+      console.log(`Finished POST (${r.statusCode}) ${url}`)
+    })
+    .on('error', e => {
+      console.log('Ehm... something went wrong')
+      console.log(e)
+      res.end()
+    })
+    .pipe(res)
+})
+
+app.put(REGEX_HTTP, (req, res) => {
+  const url = obtainUrl(req)
+
+  console.log(`Request url PUT: ${url}`)
   console.log(req.url)
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Request-Method', 'GET, PATCH, PUT, POST, OPTIONS, DELETE');
-  res.header('Doge', 'SUCH CORS');
-  let headers = Object.assign(removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS), {});
+
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header(
+    'Access-Control-Request-Method',
+    'GET, PATCH, PUT, POST, OPTIONS, DELETE'
+  )
+  res.header('Doge', 'SUCH CORS')
+
+  const headers = Object.assign(
+    removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS),
+    {}
+  )
+
   console.log(req.rawBody)
-  var k = request.put(url,
-  {
+
+  const k = request.put(url, {
     json: true,
     body: req.rawBody,
-    headers: headers
-  });
-  k.on('response', (r) => {
-    r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1';
-    delete r.headers['set-cookie'];
-    delete r.headers['connection'];
-    delete r.headers['cf-ray'];
-    delete r.headers['cf-visitor'];
-    delete r.headers['host'];
-    delete r.headers['x-forwarded-for'];
-    console.log("Finished PUT (" + r.statusCode + ") " + url)
-  }).on('error', function(e){ console.log('Ehm... something went wrong');console.log(e); res.end()}).pipe(res);
-});
+    headers: headers,
+  })
 
-app.delete(/(http|https)(:)\/\/(.*)/, function (req, res) {
-  var url = obtainUrl(req);
-  console.log("Request url DELETE: " + url)
+  k
+    .on('response', r => {
+      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1'
+      delete r.headers['set-cookie']
+      delete r.headers['connection']
+      delete r.headers['cf-ray']
+      delete r.headers['cf-visitor']
+      delete r.headers['host']
+      delete r.headers['x-forwarded-for']
+      console.log(`Finished PUT (${r.statusCode}') ${url}`)
+    })
+    .on('error', e => {
+      console.log('Ehm... something went wrong')
+      console.log(e)
+      res.end()
+    })
+    .pipe(res)
+})
+
+app.delete(REGEX_HTTP, (req, res) => {
+  const url = obtainUrl(req)
+
+  console.log(`Request url DELETE: ${url}`)
   console.log(req.url)
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Request-Method', 'GET, PATCH, PUT, POST, OPTIONS, DELETE');
-  res.header('Doge', 'SUCH CORS');
-  let headers = Object.assign(removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS), {});
+
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header(
+    'Access-Control-Request-Method',
+    'GET, PATCH, PUT, POST, OPTIONS, DELETE'
+  )
+  res.header('Doge', 'SUCH CORS')
+
+  const headers = Object.assign(
+    removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS),
+    {}
+  )
+
   console.log(req.rawBody)
-  var k = request.delete(url,
-  {
+
+  const k = request.delete(url, {
+    headers,
     json: true,
     body: req.rawBody,
-    headers: headers
-  });
-  k.on('response', (r) => {
-    r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1';
-    delete r.headers['set-cookie'];
-    delete r.headers['connection'];
-    delete r.headers['cf-ray'];
-    delete r.headers['cf-visitor'];
-    delete r.headers['host'];
-    delete r.headers['x-forwarded-for'];
-    console.log("Finished DELETE (" + r.statusCode + ") " + url)
-  }).on('error', function(e){ console.log('Ehm... something went wrong');console.log(e); res.end()}).pipe(res);
-});
+  })
 
-app.set('port', (process.env.PORT || 5000))
+  k
+    .on('response', r => {
+      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1'
+      delete r.headers['set-cookie']
+      delete r.headers['connection']
+      delete r.headers['cf-ray']
+      delete r.headers['cf-visitor']
+      delete r.headers['host']
+      delete r.headers['x-forwarded-for']
+      console.log(`Finished DELETE (${r.statusCode}') ${url}`)
+    })
+    .on('error', e => {
+      console.log('Ehm... something went wrong')
+      console.log(e)
+      res.end()
+    })
+    .pipe(res)
+})
 
-app.use(express.static('public'));
+app.set('port', process.env.PORT || 5000)
 
-app.listen(app.get('port'), function () {
-  console.log('CORS Running on port 5000!');
-});
+app.use(express.static('public'))
+
+app.listen(app.get('port'), () => {
+  console.log('CORS Running on port 5000!')
+})
