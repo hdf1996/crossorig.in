@@ -34,7 +34,7 @@ app.get(REGEX_HTTP, (req, res) => {
     'GET, PATCH, PUT, POST, OPTIONS, DELETE'
   )
   res.header('Doge', 'SUCH CORS')
-  res.header('Server', 'PENZOIL DRINKERS HOGO V1')
+  res.header('Server', 'PENZOIL DRINKERS HOGO & LEONORDO V2')
 
   const headers = Object.assign(
     removeKeys(req.headers, FORBIDDEN_CLIENT_HEADERS),
@@ -45,7 +45,7 @@ app.get(REGEX_HTTP, (req, res) => {
 
   k
     .on('response', r => {
-      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1'
+      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO & LEONORDO V2'
       delete r.headers['set-cookie']
       delete r.headers['connection']
       delete r.headers['cf-ray']
@@ -90,7 +90,7 @@ app.post(REGEX_HTTP, (req, res) => {
 
   k
     .on('response', r => {
-      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1'
+      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO & LEONORDO V2'
       delete r.headers['set-cookie']
       delete r.headers['connection']
       delete r.headers['cf-ray']
@@ -135,7 +135,7 @@ app.put(REGEX_HTTP, (req, res) => {
 
   k
     .on('response', r => {
-      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1'
+      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO & LEONORDO V2'
       delete r.headers['set-cookie']
       delete r.headers['connection']
       delete r.headers['cf-ray']
@@ -180,7 +180,7 @@ app.delete(REGEX_HTTP, (req, res) => {
 
   k
     .on('response', r => {
-      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO V1'
+      r.headers['server'] = 'JAY PENZOIL DRINKERS HOGO & LEONORDO V2'
       delete r.headers['set-cookie']
       delete r.headers['connection']
       delete r.headers['cf-ray']
