@@ -17,10 +17,6 @@ module.exports = app => {
         Object.keys(FORBIDDEN_SERVER_HEADERS).forEach(key => delete r.headers[key]);
 
         logger.info(`Finished GET (${r.statusCode}) ${url}`)
-      }).on('error', e => {
-        logger.info('Ehm... something went wrong')
-        logger.info(e)
-        res.end(500)
       }).pipe(res)
   })
 
