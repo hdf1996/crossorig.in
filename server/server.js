@@ -1,6 +1,9 @@
 const express = require('express')
+const rollbar = require("rollbar");
 const app = express()
 const bodyParser = require('body-parser')
+
+rollbar.init(process.env.ROLLBAR_ACCESS_TOKEN);
 
 app.set('port', process.env.PORT || 5000)
 
