@@ -18,8 +18,8 @@ module.exports = app => {
 
         logger.info(`Finished GET (${r.statusCode}) ${url}`)
       }).on('error', e => {
-        logger.error('Ehm... something went wrong')
-        logger.error(e)
+        logger.info('Ehm... something went wrong')
+        logger.info(e)
         res.end(500)
       }).pipe(res)
   })
