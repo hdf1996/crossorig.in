@@ -4,6 +4,6 @@ const chaiHttp = require('chai-http');
 
 const server = app.listen();
 
-after(done => server.close(done));
+after(done => server.close(function() { done() }));
 
 module.exports = { app, server }
