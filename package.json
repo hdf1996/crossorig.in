@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha --recursive",
+    "test": "NODE_ENV=test mocha --recursive --timeout 3000",
     "start": "node server/entryPoint.js"
   },
   "repository": {

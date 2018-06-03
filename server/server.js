@@ -3,7 +3,7 @@ const rollbar = require("rollbar");
 const app = express()
 const bodyParser = require('body-parser')
 
-rollbar.init(process.env.ROLLBAR_ACCESS_TOKEN);
+if(process.env.ROLLBAR_ACCESS_TOKEN) rollbar.init(process.env.ROLLBAR_ACCESS_TOKEN);
 
 app.set('port', process.env.PORT || 5000)
 
@@ -17,13 +17,9 @@ app.use((req, res, next) => {
   req.rawBody = ''
   req.setEncoding('utf8')
 
-  req.on('data', chunk => {
-    req.rawBody += chunk
-  })
+  req.on('data', chunk => req.rawBody += chunk)
 
-  req.on('end', () => {
-    next()
-  })
+  req.on('end', next)
 })
 
 const get = require('./methods/get');
