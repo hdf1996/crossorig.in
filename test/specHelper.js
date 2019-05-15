@@ -1,9 +1,13 @@
-const app = require('../server/server');
-const chai = require('chai');
-const chaiHttp = require('chai-http');
+const app = require("../server/server");
+const chai = require("chai");
+const chaiHttp = require("chai-http");
 
 const server = app.listen();
 
-after(done => server.close(function() { done() }));
+after(done =>
+  server.close(function() {
+    done();
+  })
+);
 
-module.exports = { app, server }
+module.exports = { app, server };
