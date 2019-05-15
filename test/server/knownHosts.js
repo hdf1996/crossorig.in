@@ -1,11 +1,11 @@
-const chai = require('chai');
-const request = require('request-promise');
+const chai = require("chai");
+const request = require("request-promise");
 
 const should = chai.should();
 const expect = chai.expect;
-const knownHosts = require('../fixtures/knownHosts');
+const knownHosts = require("../fixtures/knownHosts");
 
-describe('Every known host', () => {
+describe("Every known host", () => {
   Object.keys(knownHosts).forEach(host => {
     const statusCode = knownHosts[host];
     context(`with ${host}`, () => {
@@ -14,10 +14,10 @@ describe('Every known host', () => {
           uri: `http://localhost:5000/${host}`,
           resolveWithFullResponse: true
         }).then(res => {
-          res.should.have.property('statusCode', 200)
-          done()
-        })
-      })
-    })
-  })
-})
+          res.should.have.property("statusCode", statusCode);
+          done();
+        });
+      });
+    });
+  });
+});
