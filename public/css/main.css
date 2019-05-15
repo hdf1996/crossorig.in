@@ -321,6 +321,9 @@ a {
       box-shadow: 10px 10px 0px black; }
     .how-it-works.hello .example-content .highlight {
       font-weight: bold; }
+    .how-it-works.hello .example-content .tab-space {
+      display: block;
+      padding-left: 1.4em; }
 
 .btn-copy {
   width: 150px;

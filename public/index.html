@@ -86,7 +86,24 @@
             Example:
         </h1>
         <article class="example-content">
-          <p contenteditable id="example-text"">$.ajax({<span class="highlight"><br>url:</span> 'https://crossorig.in/<span id="your-domain">your-domain</span>',<span class="highlight"><br>method:</span> 'GET',<span class="highlight">success:</span> function (data) {<br>console.log("Look mom! I've fixed CORS");console.log(data);<br>}<br>});
+          <p contenteditable id="example-text">
+            <span class="highlight">fetch</span>(&quot;https://crossorig.in/<span id="your-domain">your-domain</span>&quot;)
+            <span class="tab-space">
+              .<span class="highlight">then</span>((response) => {
+                <span class="tab-space">
+                  return response.json();
+                </span>
+              })
+            </span>
+            <span class="tab-space">
+              .<span class="highlight">then</span>((data) => {
+                <span class="tab-space">
+                    console.log("Look mom! I've fixed CORS");
+                    <br>
+                    console.log(data);
+                </span>
+              });
+            </span>
           </p>
           <button class="btn-copy" onclick="CopyToClipboard('example-text')">
             <span>
@@ -96,7 +113,7 @@
               Copied &#10003;
             </span>
           </button>
-          <a class="btn-whatsapp" href="whatsapp://send?text=$.ajax({url: 'https://crossorig.in/http://your-domain',method: 'GET',success: function (data) {console.log("Look mom! I've fixed CORS");console.log(data);}});">
+          <a class="btn-whatsapp" href="whatsapp://send?text=fetch(%22https://crossorig.in/your-domain%22).then((response)=%3E%7B%20return%20response.json();%20%7D).then((data)=%3E%7B%20console.log(%22Look%20mom!%20I've%20fixed%20CORS%22);%20console.log(data);%20%7D);">
           <?xml version="1.0" ?><svg class="share-icon" style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="info"/><g id="icons"><path d="M21.7,10.2l-6.6-6C14.6,3.7,14,4.2,14,5v3c-4.7,0-8.7,2.9-10.6,6.8c-0.7,1.3-1.1,2.7-1.4,4.1   c-0.2,1,1.3,1.5,1.9,0.6C6.1,16,9.8,13.7,14,13.7V17c0,0.8,0.6,1.3,1.1,0.8l6.6-6C22.1,11.4,22.1,10.6,21.7,10.2z" id="share"/></g></svg>
             WhatsApp</a>
        
@@ -123,8 +140,7 @@
 <script type="text/javascript">
   
   $('.cors-it').submit(function() {
-
-    var domain = "whatsapp://send?text=$.ajax({url:'https://crossorig.in/"+$("#corsit-content").val()+"',method: 'GET',success: function (data) {console.log("Look mom! I've fixed CORS");console.log(data);}});";
+    var domain = "whatsapp://send?text=fetch(%22https://crossorig.in/"+$("#corsit-content").val()+"%22).then((response)=%3E%7B%20return%20response.json();%20%7D).then((data)=%3E%7B%20console.log(%22Look%20mom!%20I've%20fixed%20CORS%22);%20console.log(data);%20%7D);";
     $("#your-domain").text($("#corsit-content").val());
     $(".btn-whatsapp").attr('href', domain);
 
