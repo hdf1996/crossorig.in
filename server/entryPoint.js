@@ -1,3 +1,3 @@
-const { listen } = require('./server');
+const { listen } = require("./server");
 
 listen();
