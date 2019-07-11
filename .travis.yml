@@ -1,10 +1,4 @@
-language: ruby
-rvm:
-  - 2.3.3
-before_install:
-  - echo '--colour' > ~/.rspec
-  - 'echo ''gem: --no-document'' > ~/.gemrc'
-  - gem update --system
+language: nodejs
 script:
   - echo "hello world"
 deploy:
