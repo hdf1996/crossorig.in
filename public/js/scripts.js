@@ -91,9 +91,17 @@ UI.nodes.secondarySection
 UI.nodes.corsItForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
+  function addProtocol(url) {
+    if (!/^(f|ht)tps?:\/\//i.test(url)) {
+      url = "https://" + url;
+    }
+    return url;
+  }
+
   UI.nodes.secondarySection
           .querySelector('#your-domain')
-          .textContent = UI.nodes.corsItContent.value.trim();
+          .textContent = addProtocol(UI.nodes.corsItContent.value.trim());
+
   
   UI.nodes.secondarySection
             .querySelectorAll('.solid-text, .shadow-text')
