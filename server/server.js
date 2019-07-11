@@ -10,7 +10,7 @@ const app = express();
 if (process.env.ROLLBAR_ACCESS_TOKEN)
   rollbar.init(process.env.ROLLBAR_ACCESS_TOKEN);
 
-app.set("port", process.env.PORT || 5000);
+app.set("port", process.env.PORT || 3000);
 
 app.use(
   bodyParser.raw({

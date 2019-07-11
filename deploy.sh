@@ -1,11 +1,15 @@
-eval `ssh-agent -s`
-mkdir -p ~/.ssh
-ls ~/.ssh
-openssl aes-256-cbc -K $encrypted_10485440d0a6_key -iv $encrypted_10485440d0a6_iv -in github_deploy_key.enc -out ~/.ssh/id_rsa -d
-mv github_deploy_key.pub ~/.ssh/id_rsa.pub
-chmod 600 ~/.ssh/id_rsa
-chmod 600 ~/.ssh/id_rsa.pub
-ssh-add ~/.ssh/id_rsa
-ssh-keyscan -H 54.70.220.103 >> ~/.ssh/known_hosts
-bundle install
-bundle exec cap production deploy
+#!/bin/bash
+set -eo pipefail
+
+# This will load the script from this repository. Make sure to point to a specific commit so the build continues to work
+# event if breaking changes are introduced in this repository
+source <(curl -s https://raw.githubusercontent.com/manastech/ci-docker-builder/3fee09cce08175cfd76a246dd95112686939fb9c/build.sh)
+
+# Prepare the build
+dockerSetup
+
+# Write a VERSION file for the footer
+echo $VERSION > VERSION
+
+# Build and push the Docker image
+dockerBuildAndPush
